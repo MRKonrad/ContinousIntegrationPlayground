@@ -12,27 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee4cfd0c-ca00-4c7f-b753-ff6bec663014" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ContinousIntegrationPlayground.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ContinousIntegrationPlayground.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/appveyor.yml" beforeDir="false" afterPath="$PROJECT_DIR$/appveyor.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/include/calc.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/include/calc_step.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/include/logger.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/calc.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/calc_step.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/logger.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/test/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/test/src/calc_step_test.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/test/src/calc_test.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/test/src/logger_test.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/test/src/main.cpp" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -154,12 +134,12 @@
       <option name="presentableId" value="Default" />
       <updated>1531825820842</updated>
       <workItem from="1531825822201" duration="1435000" />
-      <workItem from="1531828076154" duration="1132000" />
+      <workItem from="1531828076154" duration="1330000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2567000" />
+    <option name="totallyTimeSpent" value="2765000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1917" y="-122" width="960" height="1177" extended-state="0" />
@@ -227,7 +207,7 @@
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>

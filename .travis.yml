@@ -1,13 +1,13 @@
 language: cpp
 
 os:
-  - linux
-  - osx
+- linux
+- osx
 
 compiler:
-  - clang
-  - gcc
+- clang
+- gcc
 
 before_install:
-  - echo $LANG
-  - echo $LC_ALL
+- echo $LANG
+- echo $LC_ALL
