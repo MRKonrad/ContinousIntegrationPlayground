@@ -11,7 +11,7 @@ set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(ContinousIntegrationPlayground main.cpp)
 
-#find_package(GTest REQUIRED)
-#include_directories(${GTEST_INCLUDE_DIR})
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIR})
 
 enable_testing ()

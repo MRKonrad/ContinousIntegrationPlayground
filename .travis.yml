@@ -15,5 +15,20 @@ before_install:
 - cmake . -Bbin
 - cd bin
 
+#install:
+#  - |
+#    if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
+#      brew install gtest
+#    fi
+#
+#addons:
+#  apt:
+#    sources:
+#    - |
+#      if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
+#        ubuntu-toolchain-r-test
+#      fi
+
 script:
 - make -j4
+- ctest -v
