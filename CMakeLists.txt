@@ -4,18 +4,11 @@
 
 cmake_minimum_required (VERSION 3.3)
 
-project (ModernCppCI)
+project (ContinousIntegrationPlayground)
 
-set_property (GLOBAL PROPERTY USE_FOLDERS ON)
-
-set (CMAKE_CXX_STANDARD 14)
+set (CMAKE_CXX_STANDARD 98)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set (THREADS_PREFER_PTHREAD_FLAG ON)
-find_package (Threads REQUIRED)
-
-add_subdirectory (third_party EXCLUDE_FROM_ALL)
-add_subdirectory (lib)
-add_subdirectory (app)
+add_executable(ContinousIntegrationPlayground main.cpp)
 
 enable_testing ()
