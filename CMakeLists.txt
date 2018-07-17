@@ -1,6 +1,4 @@
-# Distributed under the MIT License (See accompanying file /LICENSE )
-
-# CMake build : global project
+# project (ContinousIntegrationPlayground)
 
 cmake_minimum_required (VERSION 3.3)
 
@@ -11,7 +9,12 @@ set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(ContinousIntegrationPlayground main.cpp)
 
+### TESTING
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIR})
 
 enable_testing ()
+add_executable(runUnitTests mytest.cpp)
+add_test(NAME that-test-I-made COMMAND runUnitTests)
+
+target_link_libraries (runUnitTests gtest gtest_main)

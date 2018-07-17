@@ -8,3 +8,8 @@ AppVeyor
 
 # Inspiration
 Based on [this repo](https://github.com/LearningByExample/ModernCppCI).
+
+# Notes
+
+* entries in  ```.gitmodules``` are added automatically by calling for example  
+ ```git submodule add https://github.com/google/googletest.git ./thirdParty/googletest```
