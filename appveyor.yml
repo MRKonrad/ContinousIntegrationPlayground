@@ -17,6 +17,6 @@ before_build:
   - cmake . -Bbin
 
 build:
-  project: Build\ContinousIntegrationPlayground.sln        # path to Visual Studio solution or project
+  project: bin\ContinousIntegrationPlayground.sln        # path to Visual Studio solution or project
   parallel: true                        # enable MSBuild parallel builds
   verbosity: normal                     # MSBuild verbosity level {quiet|minimal|normal|detailed}
