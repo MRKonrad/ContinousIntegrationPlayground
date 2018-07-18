@@ -10,11 +10,13 @@ set (CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(ContinousIntegrationPlayground main.cpp)
 
 ### TESTING
-add_subdirectory(thirdParty/googletest)
+include(gtest.cmake)
+find_package (Threads REQUIRED)
+target_link_libraries(gtest ${CMAKE_THREAD_LIBS_INIT})
 
 enable_testing ()
+
 add_executable(runUnitTests mytest.cpp)
 add_test(NAME that-test-I-made COMMAND runUnitTests)
 
-target_link_libraries (runUnitTests gtest gtest_main)
-
+target_link_libraries (runUnitTests gtest)
