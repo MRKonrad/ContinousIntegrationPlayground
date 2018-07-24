@@ -1,20 +1,24 @@
 language: cpp
 
 os:
-- linux
-- osx
+  - linux
+  - osx
 
 compiler:
-- clang
-- gcc
+  - clang
+  - gcc
 
 before_install:
-- echo $LANG
-- echo $LC_ALL
-- cd ${TRAVIS_BUILD_DIR}
-- cmake . -Bbin
-- cd bin
+  - echo $LANG
+  - echo $LC_ALL
+  - cd ${TRAVIS_BUILD_DIR}
+  - cmake . -Bbin -DCOVERAGE=1
+  - cd bin
+  - pip install --user cpp-coveralls # coveralls
 
 script:
-- make -j4
-- ctest -V -j4
+  - make -j4
+  - ctest -V -j4
+
+after_success:
+  - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"

@@ -20,3 +20,10 @@ add_executable(runUnitTests mytest.cpp)
 add_test(NAME that-test-I-made COMMAND runUnitTests)
 
 target_link_libraries (runUnitTests gtest)
+
+# Coveralls
+SET(COVERAGE OFF CACHE BOOL "Coverage")
+if (COVERAGE)
+    target_compile_options(runUnitTests PRIVATE --coverage)
+    target_link_libraries(runUnitTests PRIVATE --coverage)
+endif()
