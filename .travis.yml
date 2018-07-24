@@ -14,6 +14,18 @@ before_install:
   - cd ${TRAVIS_BUILD_DIR}
   - cmake . -Bbin -DCOVERAGE=1
   - cd bin
+
+  if [[ "$TRAVIS_OS_NAME" == "osx" ]];
+  #  - brew update
+    - brew install pyenv
+    - eval "$(pyenv init -)"
+    - pyenv install 2.7.6
+    - pyenv global 2.7.6
+    - pyenv rehash
+    - pip install cpp-coveralls
+    - pyenv rehash
+  fi;
+
   - pip install --user cpp-coveralls # coveralls
 
 script:
