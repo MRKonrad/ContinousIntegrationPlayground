@@ -6,7 +6,12 @@ os:
 
 compiler:
   - clang
-  - gcc
+#  - gcc
+
+addons:
+  apt:
+    sources:
+      - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ubuntu-toolchain-r-test; fi; # coveralls
 
 before_install:
   - echo $LANG
@@ -15,20 +20,21 @@ before_install:
   - cmake . -Bbin -DCOVERAGE=1
   - cd bin
 
-  #  - brew update
 #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install pyenv; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then eval "$(pyenv init -)"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 2.7.6; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global 2.7.6; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install cpp-coveralls; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then eval "$(pyenv init -)"; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 2.7.6; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global 2.7.6; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install cpp-coveralls; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
 
-  - pip install --user cpp-coveralls # coveralls
+#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then easy_install pip; fi
+
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip install --user cpp-coveralls ; fi # coveralls
 
 script:
   - make -j4
   - ctest -V -j4
 
 after_success:
-  - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"; fi # coveralls

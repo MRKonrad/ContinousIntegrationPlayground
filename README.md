@@ -7,7 +7,7 @@
 | Coveralls     | [![Coverage Status](https://coveralls.io/repos/github/MRKonrad/ContinousIntegrationPlayground/badge.svg?branch=master)](https://coveralls.io/github/MRKonrad/ContinousIntegrationPlayground?branch=master) |
 
 # Inspiration
-Based on [this repo](https://github.com/LearningByExample/ModernCppCI).
+Based on [this repo](https://github.com/LearningByExample/ModernCppCI) and [this post](http://david-grs.github.io/cpp-clang-travis-cmake-gtest-coveralls-appveyor/).
 
 # Notes
 
