@@ -19,7 +19,7 @@ enable_testing ()
 add_executable(runUnitTests mytest.cpp)
 add_test(NAME that-test-I-made COMMAND runUnitTests)
 
-target_link_libraries (runUnitTests PUBLIC --gtest)
+target_link_libraries (runUnitTests PUBLIC gtest)
 
 # Coveralls
 SET(COVERAGE OFF CACHE BOOL "Coverage")
