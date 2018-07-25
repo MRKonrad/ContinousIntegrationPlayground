@@ -29,9 +29,10 @@ addons:
   apt:
     sources:
       # coveralls only in linux
-      - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
-          ubuntu-toolchain-r-test;
-        fi
+      - ubuntu-toolchain-r-test;
+#      - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
+#          ubuntu-toolchain-r-test;
+#        fi
     packages:
       # for the documentation
       - doxygen;
