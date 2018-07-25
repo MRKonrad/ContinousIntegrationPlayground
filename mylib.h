@@ -5,6 +5,11 @@
 #ifndef CONTINOUSINTEGRATIONPLAYGROUND_MYLIB_H
 #define CONTINOUSINTEGRATIONPLAYGROUND_MYLIB_H
 
+/**
+ * \brief Not sure what to put here
+ * @param input
+ * @return
+ */
 int dummyFunction(int input){
     return input;
 }

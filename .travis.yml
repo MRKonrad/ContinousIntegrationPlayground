@@ -1,3 +1,7 @@
+# ContinousIntegrationPlayground
+
+sudo: false
+
 language: cpp
 
 os:
@@ -8,13 +12,33 @@ compiler:
   - gcc
   - clang
 
+# Blacklist
+branches:
+  # for the documentation
+  except:
+    - gh-pages
+
+# Environment variables
+env:
+  global:
+    - GH_REPO_NAME: ContinousIntegrationPlayground
+    - DOXYFILE: $TRAVIS_BUILD_DIR/<path_to_your_doxygen_configuration_file>
+    - GH_REPO_REF: github.com/MRKonrad/ContinousIntegrationPlayground.git
+
 addons:
   apt:
     sources:
       # coveralls only in linux
-      - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
           ubuntu-toolchain-r-test;
-        fi;
+        fi
+    packages:
+      # for the documentation
+      - doxygen
+      - doxygen-doc
+      - doxygen-latex
+      - doxygen-gui
+      - graphviz
 
 before_install:
   - echo $LANG
@@ -22,7 +46,7 @@ before_install:
   - cd ${TRAVIS_BUILD_DIR}
 
   # coveralls only in linux
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
       pip install --user cpp-coveralls;
     fi
 
@@ -30,7 +54,7 @@ script:
   # configure and generate
   - cmake .
 
-  # add ceverage option for coveralls (only in linux g++)
+  # add coverage option for coveralls (only in linux g++)
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
       cmake -DCOVERAGE=1 . ;
     fi
@@ -46,3 +70,8 @@ after_success:
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
       coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" ;
     fi
+
+  # Generate and deploy documentation
+  - cd $TRAVIS_BUILD_DIR
+  - chmod +x generateDocumentationAndDeploy.sh
+  - ./generateDocumentationAndDeploy.sh
