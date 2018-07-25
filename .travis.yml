@@ -34,4 +34,4 @@ script:
   - ./runUnitTests
 
 after_success:
-  - coveralls --root . --exclude CMakeFiles --exclude thirdParty # coveralls
+  - coveralls --root . --exclude thirdParty # coveralls
