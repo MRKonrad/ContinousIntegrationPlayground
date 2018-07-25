@@ -1,40 +1,23 @@
+dist: trusty
+sudo: false
 language: cpp
-
-os:
-  - linux
-#  - osx
-
-compiler:
-  - clang
-#  - gcc
 
 addons:
   apt:
     sources:
-      - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ubuntu-toolchain-r-test; fi; # coveralls
+      - ubuntu-toolchain-r-test
+      - llvm-toolchain-trusty-5.0
+    packages:
+      - g++-6
+      - clang-5.0
 
 before_install:
-  - echo $LANG
-  - echo $LC_ALL
-  - cd ${TRAVIS_BUILD_DIR}
-
-
-
-  # needed for coveralls on osx
-#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then eval "$(pyenv init -)"; fi
-#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 2.7.6; fi
-#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global 2.7.6; fi
-#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
-#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install cpp-coveralls; fi
-
-  # needed for coveralls on linux
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip install --user cpp-coveralls; fi
+  - pip install --user cpp-coveralls
 
 script:
-  - cmake -DCOVERAGE=1 . # cmake
-  - cmake --build . # cmake build
-#  - make -j4
-  - ./runUnitTests
+  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake -DCOVERAGE=1 .
+  - cmake --build . 
+  - ./tests
 
 after_success:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then coveralls --root . ; fi # coveralls
+  - coveralls --root . -E ".*CMakeFiles.*" 

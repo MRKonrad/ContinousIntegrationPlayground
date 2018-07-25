@@ -1,6 +1,4 @@
-# based on http://david-grs.github.io/cpp-clang-travis-cmake-gtest-coveralls-appveyor/
-
-set(GOOGLETEST_ROOT thirdParty/googletest/googletest CACHE STRING "Google Test source root")
+set(GOOGLETEST_ROOT gtest/googletest CACHE STRING "Google Test source root")
 
 include_directories(SYSTEM
     ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}
@@ -17,3 +15,4 @@ foreach(_source ${GOOGLETEST_SOURCES})
 endforeach()
 
 add_library(gtest ${GOOGLETEST_SOURCES})
+
