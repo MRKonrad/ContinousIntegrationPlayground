@@ -21,6 +21,13 @@ before_install:
   - cd ${TRAVIS_BUILD_DIR}
   - if ([[ "$TRAVIS_OS_NAME" == "linux" ]] AND [[ "$CXX" == "g++" ]]); then echo "ABCABC" ; fi
 
+  - |
+  if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+  if [[ "$CXX" == "g++" ]]; then
+    echo "ABCABC"
+  ;fi
+  ;fi
+
 #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then eval "$(pyenv init -)"; fi
 #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 2.7.6; fi
 #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global 2.7.6; fi
