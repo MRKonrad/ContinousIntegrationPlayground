@@ -17,10 +17,9 @@ before_install:
   - echo $LANG
   - echo $LC_ALL
   - cd ${TRAVIS_BUILD_DIR}
-  - |
-  if ([ "$TRAVIS_OS_NAME" == "linux" ]); then
-  echo "ABCABC" ;
-  fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      echo "ABCABC" ;
+    fi
 
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip install --user cpp-coveralls; fi
 
@@ -32,4 +31,4 @@ script:
   - ./runUnitTests
 
 after_success:
-  - if ([ "$TRAVIS_OS_NAME" == "linux" ] AND [ "$CXX" == "g++" ]); then coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*"; fi # coveralls
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*"; fi # coveralls
