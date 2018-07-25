@@ -26,10 +26,10 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 2.7.6; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global 2.7.6; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; pip install cpp-coveralls; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install cpp-coveralls; fi
 
   # needed for coveralls on linux
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; pip install --user cpp-coveralls; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip install --user cpp-coveralls; fi
 
 script:
   - make -j4
