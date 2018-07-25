@@ -52,6 +52,7 @@ before_install:
   - echo $LANG
   - echo $LC_ALL
   - cd ${TRAVIS_BUILD_DIR}
+  - ls ${TRAVIS_BUILD_DIR}
 
   # coveralls only in linux
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
@@ -80,6 +81,7 @@ after_success:
       coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" ;
     fi
 
+  - ls ${TRAVIS_BUILD_DIR}
   # Generate and deploy documentation
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
       cd $TRAVIS_BUILD_DIR;

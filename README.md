@@ -10,7 +10,10 @@ See the [DOCS PAGE](https://mrkonrad.github.io/ContinousIntegrationPlayground/)
 
 
 # Inspiration
-Based on [this repo](https://github.com/LearningByExample/ModernCppCI) and [this post](http://david-grs.github.io/cpp-clang-travis-cmake-gtest-coveralls-appveyor/).
+Based on 
+* [this repo](https://github.com/LearningByExample/ModernCppCI)
+* [this post](http://david-grs.github.io/cpp-clang-travis-cmake-gtest-coveralls-appveyor/) about travis, cmake, gtest, coveralls and appveyor
+* [this gist](https://gist.github.com/vidavidorra/7ed6166a46c537d3cbd2) about doxygen, travis and github 
 
 # Notes
 * entries in  `.gitmodules` are added automatically by calling for example  
