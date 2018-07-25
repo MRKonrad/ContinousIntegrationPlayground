@@ -39,4 +39,4 @@ script:
   - ./runUnitTests
 
 after_success:
-  - coveralls --root . -E ".*CMakeFiles.*" -E thirdParty # coveralls
+  - coveralls --root . --exclude ".*CMakeFiles.*" --exclude thirdParty # coveralls
