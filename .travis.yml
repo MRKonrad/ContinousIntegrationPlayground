@@ -34,4 +34,4 @@ script:
   - ./runUnitTests
 
 after_success:
-  - coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" -E ".*main.*" # coveralls
+  - coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" --exclude main.cpp # coveralls
