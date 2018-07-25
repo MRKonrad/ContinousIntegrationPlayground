@@ -81,6 +81,7 @@ after_success:
       coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" ;
     fi
 
+  - pwd
   - ls ${TRAVIS_BUILD_DIR}
   # Generate and deploy documentation
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
