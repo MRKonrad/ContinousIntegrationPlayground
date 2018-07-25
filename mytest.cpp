@@ -2,7 +2,7 @@
 #include "mylib.h"
 
 TEST(ContinousIntegrationPlayground, DummyTest) {
-    EXPECT_EQ(1, 1);
+    EXPECT_EQ(1, 0);
 }
 
 TEST(ContinousIntegrationPlayground, DummyFunctionTest) {

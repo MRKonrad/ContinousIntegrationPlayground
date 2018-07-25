@@ -6,5 +6,5 @@ using namespace std;
 int main() {
     cout << "Hello, World!" << endl;
     cout << dummyFunction(4) << endl;
-    return 0;
+    return EXIT_SUCCESS;
 }
