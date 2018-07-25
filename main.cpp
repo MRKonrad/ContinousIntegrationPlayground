@@ -1,5 +1,6 @@
 #include <iostream>
 #include "mylib.h"
+#include <cstdlib>
 
 using namespace std;
 
