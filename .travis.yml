@@ -28,9 +28,8 @@ before_install:
 #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install cpp-coveralls; fi
 #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
 
-#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then easy_install pip; fi
-
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip install --user cpp-coveralls ; fi # coveralls
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then easy_install pip; fi # pip needed for coveralls
+  - then pip install --user cpp-coveralls # coveralls
 
 script:
   - make -j4
@@ -39,4 +38,4 @@ script:
   - ./runUnitTests
 
 after_success:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"; fi # coveralls
+  - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*" # coveralls
