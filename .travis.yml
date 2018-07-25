@@ -25,7 +25,7 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global 2.7.6; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
 
-  - pip install cpp-coveralls
+  - pip install --user cpp-coveralls
 
 #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
 
