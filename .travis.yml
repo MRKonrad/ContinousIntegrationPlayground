@@ -5,7 +5,7 @@ os:
 #  - osx
 
 compiler:
-#  - clang
+  - clang
   - gcc
 
 addons:
@@ -39,4 +39,4 @@ script:
   - ./runUnitTests
 
 after_success:
-  - coveralls --root . -E ".*CMakeFiles.*" # coveralls
+  - coveralls --root . -E ".*CMakeFiles.*" -E thirdParty # coveralls
