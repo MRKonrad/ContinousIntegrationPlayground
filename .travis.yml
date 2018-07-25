@@ -36,4 +36,4 @@ script:
   - ./runUnitTests
 
 after_success:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then- coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*"; fi # coveralls
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*"; fi # coveralls
