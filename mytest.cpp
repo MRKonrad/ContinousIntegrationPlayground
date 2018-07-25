@@ -6,6 +6,6 @@ TEST(ContinousIntegrationPlayground, DummyTest) {
 }
 
 TEST(ContinousIntegrationPlayground, DummyFunctionTest) {
-    int dummyVariable;
+    int dummyVariable = 4;
     EXPECT_EQ(dummyVariable, dummyFunction(dummyVariable));
 }

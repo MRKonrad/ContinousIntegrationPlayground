@@ -11,27 +11,37 @@ compiler:
 addons:
   apt:
     sources:
-      - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ubuntu-toolchain-r-test; fi; # coveralls
+      # coveralls only in linux
+      - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ubuntu-toolchain-r-test; fi;
 
 before_install:
   - echo $LANG
   - echo $LC_ALL
   - cd ${TRAVIS_BUILD_DIR}
 
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip install --user cpp-coveralls; fi
-
+  # coveralls only in linux
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      pip install --user cpp-coveralls;
+    fi
 
 script:
   - cmake .
+
+  # coveralls only in linux g++
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
       if [[ "$CXX" == "g++" ]]; then
         cmake -DCOVERAGE=1 . ;
       fi
     fi
+
+  # this is make
   - cmake --build .
+
+  # needed to get the coverage
   - ./runUnitTests
 
 after_success:
+  # coveralls only in linux g++
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
       if [[ "$CXX" == "g++" ]]; then
         coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" ;
