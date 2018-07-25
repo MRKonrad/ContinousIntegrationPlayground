@@ -1,3 +1,9 @@
+/*! \file mylib.h
+    \brief A Documented file.
+
+    Details.
+*/
+
 //
 // Created by Konrad Werys on 7/24/18.
 //
