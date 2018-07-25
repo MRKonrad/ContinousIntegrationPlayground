@@ -18,8 +18,7 @@ before_install:
   - echo $LC_ALL
   - cd ${TRAVIS_BUILD_DIR}
 
-  - cmake -DCOVERAGE=1 . # cmake
-  - cmake --build . # cmake build
+
 
   # needed for coveralls on osx
 #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then eval "$(pyenv init -)"; fi
@@ -32,7 +31,9 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip install --user cpp-coveralls; fi
 
 script:
-  - make -j4
+  - cmake -DCOVERAGE=1 . # cmake
+  - cmake --build . # cmake build
+#  - make -j4
   - ./runUnitTests
 
 after_success:
