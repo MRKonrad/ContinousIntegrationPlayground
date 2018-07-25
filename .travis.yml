@@ -22,7 +22,7 @@ branches:
 env:
   global:
     - GH_REPO_NAME: ContinousIntegrationPlayground
-    - DOXYFILE: $TRAVIS_BUILD_DIR/<path_to_your_doxygen_configuration_file>
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
     - GH_REPO_REF: github.com/MRKonrad/ContinousIntegrationPlayground.git
 
 addons:
@@ -72,6 +72,8 @@ after_success:
     fi
 
   # Generate and deploy documentation
-  - cd $TRAVIS_BUILD_DIR
-  - chmod +x generateDocumentationAndDeploy.sh
-  - ./generateDocumentationAndDeploy.sh
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
+      cd $TRAVIS_BUILD_DIR;
+      chmod +x generateDocumentationAndDeploy.sh;
+      ./generateDocumentationAndDeploy.sh;
+    fi
