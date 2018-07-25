@@ -1,11 +1,11 @@
 language: cpp
 
 os:
-#  - linux
-  - osx
+  - linux
+#  - osx
 
 compiler:
-  - clang
+#  - clang
   - gcc
 
 addons:
@@ -38,4 +38,4 @@ script:
   - ./runUnitTests
 
 after_success:
-  - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*" # coveralls
+  - coveralls --root . -E ".*thirdParty*" -E ".*CMakeFiles.*" # coveralls
