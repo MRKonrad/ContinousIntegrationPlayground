@@ -6,7 +6,7 @@ os:
 
 compiler:
   - clang
-  - gcc
+#  - gcc
 
 addons:
   apt:
@@ -34,4 +34,4 @@ script:
   - ./runUnitTests
 
 after_success:
-  - coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" --exclude main.cpp # coveralls
+  - coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" # coveralls
