@@ -68,7 +68,7 @@ script:
     fi
 
   # this is make
-  make -j8
+  - make -j8
   - cmake --build .
 
   # needed to get the coverage
