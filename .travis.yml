@@ -5,7 +5,7 @@ os:
 #  - osx
 
 compiler:
-  - clang
+#  - clang
   - gcc
 
 addons:
@@ -19,9 +19,7 @@ before_install:
   - cd ${TRAVIS_BUILD_DIR}
   - cmake . -DCOVERAGE=1
   - cmake --build .
-#  - cd bin
 
-#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install pyenv; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then eval "$(pyenv init -)"; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 2.7.6; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global 2.7.6; fi
@@ -29,14 +27,11 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install cpp-coveralls; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
 
-#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then easy_install pip; fi # pip needed for coveralls
-  - pip install --user cpp-coveralls # coveralls
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip install --user cpp-coveralls; fi# coveralls
 
 script:
   - make -j4
-#  - make test
-#  - ctest -V -j4
   - ./runUnitTests
 
 after_success:
-  - coveralls --root . --exclude ".*CMakeFiles.*" --exclude thirdParty # coveralls
+  - coveralls --root . --exclude CMakeFiles --exclude thirdParty # coveralls
