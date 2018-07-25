@@ -34,11 +34,13 @@ addons:
         fi
     packages:
       # for the documentation
-      - doxygen
-      - doxygen-doc
-      - doxygen-latex
-      - doxygen-gui
-      - graphviz
+      - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
+          doxygen;
+          doxygen-doc;
+          doxygen-latex;
+          doxygen-gui;
+          graphviz;
+        fi
 
 before_install:
   - echo $LANG
