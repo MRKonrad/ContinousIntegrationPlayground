@@ -11,5 +11,9 @@ Based on [this repo](https://github.com/LearningByExample/ModernCppCI) and [this
 
 # Notes
 
-* entries in  ```.gitmodules``` are added automatically by calling for example  
- ```git submodule add https://github.com/google/googletest.git ./thirdParty/googletest```
+* entries in  `.gitmodules` are added automatically by calling for example  
+ `git submodule add https://github.com/google/googletest.git ./thirdParty/googletest`
+* to generate coverage `lcov --capture --directory . --output-file coverage.info`
+* to generate coverage html report `genhtml coverage.info --output-directory out`
+
+
