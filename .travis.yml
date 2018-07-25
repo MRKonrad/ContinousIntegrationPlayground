@@ -25,10 +25,8 @@ before_install:
     fi
 
   # coveralls only in linux g++
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      if [ "$CXX" == "g++" ]; then
-        cmake -DCOVERAGE=1 . ;
-      fi
+  - if [ ("$TRAVIS_OS_NAME" == "linux") AND ("$CXX" == "g++") ]; then
+      echo "ABCABC";
     fi
 
 script:
