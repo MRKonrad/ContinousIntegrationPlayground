@@ -17,8 +17,9 @@ before_install:
   - echo $LANG
   - echo $LC_ALL
   - cd ${TRAVIS_BUILD_DIR}
-  - cmake . -Bbin -DCOVERAGE=1
-  - cd bin
+  - cmake . -DCOVERAGE=1
+  - cmake --build .
+#  - cd bin
 
 #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install pyenv; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then eval "$(pyenv init -)"; fi
