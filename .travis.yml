@@ -17,13 +17,13 @@ before_install:
   - echo $LANG
   - echo $LC_ALL
   - cd ${TRAVIS_BUILD_DIR}
-  - cmake -DCOVERAGE=1 .
-  - cmake --build .
+#  - cmake -DCOVERAGE=1 .
+#  - cmake --build .
 
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then eval "$(pyenv init -)"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 2.7.6; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global 2.7.6; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then eval "$(pyenv init -)"; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install 2.7.6; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global 2.7.6; fi
+#  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
 
   - pip install --user cpp-coveralls
 
@@ -32,8 +32,10 @@ before_install:
 #  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip install --user cpp-coveralls; fi # coveralls
 
 script:
-  - make -j4
+  - cmake -DCOVERAGE=1 .
+  - cmake --build .
+#  - make -j4
   - ./runUnitTests
 
 after_success:
-  - coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" # coveralls
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*"; fi # coveralls
