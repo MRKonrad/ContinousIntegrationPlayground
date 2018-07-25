@@ -2,17 +2,19 @@ language: cpp
 
 os:
   - linux
-#  - osx
+  - osx
 
 compiler:
   - gcc
-#  - clang
+  - clang
 
 addons:
   apt:
     sources:
       # coveralls only in linux
-      - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ubuntu-toolchain-r-test; fi;
+      - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+          ubuntu-toolchain-r-test;
+        fi;
 
 before_install:
   - echo $LANG
@@ -24,19 +26,13 @@ before_install:
       pip install --user cpp-coveralls;
     fi
 
-  # coveralls only in linux g++
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
-      echo "ABCABC";
-    fi
-
 script:
+  # configure and generate
   - cmake .
 
-  # coveralls only in linux g++
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-      if [[ "$CXX" == "g++" ]]; then
-        cmake -DCOVERAGE=1 . ;
-      fi
+  # add ceverage option for coveralls (only in linux g++)
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
+      cmake -DCOVERAGE=1 . ;
     fi
 
   # this is make
@@ -47,8 +43,6 @@ script:
 
 after_success:
   # coveralls only in linux g++
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-      if [[ "$CXX" == "g++" ]]; then
-        coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" ;
-      fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
+      coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" ;
     fi
