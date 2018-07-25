@@ -2,7 +2,7 @@ language: cpp
 
 os:
   - linux
-#  - osx
+  - osx
 
 compiler:
   - gcc
@@ -17,19 +17,18 @@ before_install:
   - echo $LANG
   - echo $LC_ALL
   - cd ${TRAVIS_BUILD_DIR}
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-      if [[ "$CXX" == "g++" ]]; then
-        echo "ABCABC" ;
-      fi
-    fi
 
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip install --user cpp-coveralls; fi
 
 
 script:
-  - cmake -DCOVERAGE=1 .
+  - cmake .
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      if [[ "$CXX" == "g++" ]]; then
+        cmake -DCOVERAGE=1 . ;
+      fi
+    fi
   - cmake --build .
-#  - make -j4
   - ./runUnitTests
 
 after_success:
