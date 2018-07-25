@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>ContinousIntegrationPlayground: Main Page</title>
+<title>ContinousIntegrationPlayground: Continous Integration Playground</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -43,8 +43,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -76,7 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('index.html','');});
+$(document).ready(function(){initNavTree('md__home_travis_build__m_r_konrad__continous_integration_playground__r_e_a_d_m_e.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -95,10 +95,34 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">ContinousIntegrationPlayground Documentation</div>  </div>
+<div class="title">Continous Integration Playground </div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><p>See the <a href="https://mrkonrad.github.io/ContinousIntegrationPlayground/">DOCS PAGE</a></p>
+<table class="doxtable">
+<tr>
+<th align="center">System </th><th align="center">Status  </th></tr>
+<tr>
+<td align="center">Travis (OSX/Linux) </td><td align="center"><a href="https://travis-ci.org/MRKonrad/ContinousIntegrationPlayground">![Travis (.org)](https://img.shields.io/travis/MRKonrad/ContinousIntegrationPlayground.svg?style=for-the-badge)</a> </td></tr>
+<tr>
+<td align="center">AppVeyor (Windows) </td><td align="center"><a href="https://ci.appveyor.com/project/MRKonrad/continousintegrationplayground">![AppVeyor](https://img.shields.io/appveyor/ci/MRKonrad/continousintegrationplayground.svg?style=for-the-badge)</a> </td></tr>
+<tr>
+<td align="center">Coveralls (test coverage) </td><td align="center"><a href="https://coveralls.io/github/MRKonrad/ContinousIntegrationPlayground">![Coveralls](https://img.shields.io/coveralls/github/MRKonrad/ContinousIntegrationPlayground.svg?style=for-the-badge)</a> </td></tr>
+</table>
+<h1>Inspiration</h1>
+<p>Based on</p>
+<ul>
+<li><a href="https://github.com/LearningByExample/ModernCppCI">this repo</a></li>
+<li><a href="http://david-grs.github.io/cpp-clang-travis-cmake-gtest-coveralls-appveyor/">this post</a> about travis, cmake, gtest, coveralls and appveyor</li>
+<li><a href="https://gist.github.com/vidavidorra/7ed6166a46c537d3cbd2">this gist</a> about doxygen, travis and github</li>
+</ul>
+<h1>Notes</h1>
+<ul>
+<li>entries in <code>.gitmodules</code> are added automatically by calling for example <code>git submodule add <a href="https://github.com/google/googletest.git">https://github.com/google/googletest.git</a> ./thirdParty/googletest</code></li>
+<li>to generate coverage <code>lcov --capture --directory . --output-file coverage.info</code></li>
+<li>to generate coverage html report <code>genhtml coverage.info --output-directory out</code> </li>
+</ul>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
