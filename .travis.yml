@@ -2,11 +2,11 @@ language: cpp
 
 os:
   - linux
-  - osx
+#  - osx
 
 compiler:
   - gcc
-  - clang
+#  - clang
 
 addons:
   apt:
@@ -25,7 +25,7 @@ before_install:
     fi
 
   # coveralls only in linux g++
-  - if [ ("$TRAVIS_OS_NAME" == "linux") AND ("$CXX" == "g++") ]; then
+  - if [ (["$TRAVIS_OS_NAME" == "linux"]) AND (["$CXX" == "g++"]) ]; then
       echo "ABCABC";
     fi
 
