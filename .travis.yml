@@ -29,5 +29,5 @@ after_success:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
       if [[ "$CXX" == "g++" ]]; then
         coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*"; # coveralls
-      fi
+      fi;
     fi
