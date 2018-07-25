@@ -35,6 +35,7 @@ before_install:
 script:
   - make -j4
   - ctest -V -j4
+  - ./runUnitTests
 
 after_success:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"; fi # coveralls
