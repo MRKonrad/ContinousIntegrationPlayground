@@ -27,7 +27,7 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install cpp-coveralls; fi
 #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv rehash; fi
 
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip install --user cpp-coveralls; fi# coveralls
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pip install --user cpp-coveralls; fi # coveralls
 
 script:
   - make -j4
