@@ -6,11 +6,11 @@ language: cpp
 
 os:
   - linux
-#  - osx
+  - osx
 
 compiler:
   - gcc
-#  - clang
+  - clang
 
 # Blacklist
 branches:
@@ -28,11 +28,11 @@ env:
 addons:
   apt:
     sources:
-      # coveralls only in linux
-      - ubuntu-toolchain-r-test
-#      - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
-#          ubuntu-toolchain-r-test;
-#        fi
+      # coveralls only in linux g++
+#      - ubuntu-toolchain-r-test
+      - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
+          ubuntu-toolchain-r-test;
+        fi
     packages:
       # for the documentation
       - doxygen
@@ -54,7 +54,7 @@ before_install:
   - cd ${TRAVIS_BUILD_DIR}
   - ls ${TRAVIS_BUILD_DIR}
 
-  # coveralls only in linux
+  # coveralls only in linux g++
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
       pip install --user cpp-coveralls;
     fi
@@ -73,7 +73,7 @@ script:
   - cmake --build .
 
   # needed to get the coverage
-  - ./runUnitTests
+  - ./ContinousIntegrationPlaygroundTests
 
 after_success:
   # coveralls only in linux g++
@@ -83,7 +83,7 @@ after_success:
 
   - pwd
   - ls ${TRAVIS_BUILD_DIR}
-  # Generate and deploy documentation
+  # Generate and deploy documentation only in linux g++
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
       cd $TRAVIS_BUILD_DIR;
       chmod +x generateDocumentationAndDeploy.sh;
