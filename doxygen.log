@@ -17,8 +17,14 @@ Warning: ignoring unsupported tag `DOCBOOK_PROGRAMLISTING =' at line 2013, file 
 Warning: ignoring unsupported tag `PLANTUML_JAR_PATH      =' at line 2442, file /home/travis/build/MRKonrad/ContinousIntegrationPlayground/Doxyfile
 Warning: ignoring unsupported tag `PLANTUML_CFG_FILE      =' at line 2447, file /home/travis/build/MRKonrad/ContinousIntegrationPlayground/Doxyfile
 Warning: ignoring unsupported tag `PLANTUML_INCLUDE_PATH  =' at line 2452, file /home/travis/build/MRKonrad/ContinousIntegrationPlayground/Doxyfile
-Warning: tag INPUT: input source `{:' does not exist
-warning: source {: is not a readable file or directory... skipping.
+Warning: tag INPUT: input source `$TRAVIS_BUILD_DIR' does not exist
+Warning: tag INPUT: input source `$TRAVIS_BUILD_DIR/app' does not exist
+Warning: tag INPUT: input source `$TRAVIS_BUILD_DIR/lib' does not exist
+Warning: tag INPUT: input source `$TRAVIS_BUILD_DIR/tests' does not exist
+warning: source $TRAVIS_BUILD_DIR is not a readable file or directory... skipping.
+warning: source $TRAVIS_BUILD_DIR/app is not a readable file or directory... skipping.
+warning: source $TRAVIS_BUILD_DIR/lib is not a readable file or directory... skipping.
+warning: source $TRAVIS_BUILD_DIR/tests is not a readable file or directory... skipping.
 Searching for include files...
 Searching for example files...
 Searching for images...
