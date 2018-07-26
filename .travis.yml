@@ -106,5 +106,6 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-#    repo: MRKonrad/ContinousIntegrationPlayground
+#    repo: MRKonrad/
+    os: osx
 
