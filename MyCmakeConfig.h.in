@@ -1,3 +1,7 @@
+// the configured options and settings for Tutorial
+#define ContinousIntegrationPlayground_VERSION_MAJOR @ContinousIntegrationPlayground_VERSION_MAJOR@
+#define ContinousIntegrationPlayground_VERSION_MINOR @ContinousIntegrationPlayground_VERSION_MINOR@
+
 #cmakedefine USE_ONLY_CPP98
 #cmakedefine USE_VTK
 #cmakedefine USE_NR2

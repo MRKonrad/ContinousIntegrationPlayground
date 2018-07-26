@@ -6,6 +6,10 @@ cmake_minimum_required (VERSION 2.8)
 
 project (ContinousIntegrationPlayground)
 
+# The version number.
+set (ContinousIntegrationPlayground_VERSION_MAJOR 0)
+set (ContinousIntegrationPlayground_VERSION_MINOR 1)
+
 # Compiler flags
 set (CMAKE_CXX_STANDARD 98)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
