@@ -23,7 +23,7 @@ env:
   global:
     - GH_REPO_NAME: ContinousIntegrationPlayground
     - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
-    - INPUT_FOR_DOXY: {$TRAVIS_BUILD_DIR $TRAVIS_BUILD_DIR/app $TRAVIS_BUILD_DIR/lib $TRAVIS_BUILD_DIR/tests"}
+    - INPUT_FOR_DOXY: "'$TRAVIS_BUILD_DIR $TRAVIS_BUILD_DIR/app $TRAVIS_BUILD_DIR/lib $TRAVIS_BUILD_DIR/tests'"
     - GH_REPO_REF: github.com/MRKonrad/ContinousIntegrationPlayground.git
 
 addons:
