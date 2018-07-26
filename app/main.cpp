@@ -1,8 +1,9 @@
 /*!
+ * \file main.cpp
  * \brief A Documented file with main.
  * \details Details of the file should be here. LOL
  * \author Konrad Werys
- * \date $Date: 2018/08/24 $
+ * \date 2018/08/24
  */
 
 #include <iostream>
@@ -10,6 +11,10 @@
 
 using namespace std;
 
+/**
+ * main
+ * @return always 0
+ */
 int main() {
     cout << "Hello, World!" << endl;
     cout << dummyFunction(4) << endl;

@@ -1,8 +1,9 @@
 /*!
+ * \file mylib.h
  * \brief A Documented file.
  * \details Details of the file should be here. LOL
  * \author Konrad Werys
- * \date $Date: 2018/08/24 $
+ * \date 2018/08/24
  */
 
 #ifndef CONTINOUSINTEGRATIONPLAYGROUND_MYLIB_H

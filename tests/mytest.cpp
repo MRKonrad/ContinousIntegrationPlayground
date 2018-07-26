@@ -1,8 +1,9 @@
 /*!
+ * \file mytest.cpp
  * \brief A Documented test file.
  * \details Details of the file should be here. LOL
  * \author Konrad Werys
- * \date $Date: 2018/08/24 $
+ * \date 2018/08/24
  */
 
 #include "gtest/gtest.h"
