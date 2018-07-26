@@ -1,7 +1,6 @@
 var NAVTREE =
 [
   [ "ContinousIntegrationPlayground", "index.html", [
-    [ "Continous Integration Playground", "md__home_travis_build__m_r_konrad__continous_integration_playground__r_e_a_d_m_e.html", null ],
     [ "Files", null, [
       [ "File List", "files.html", "files" ]
     ] ]
@@ -10,7 +9,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_my_cmake_config_8h_source.html"
+"dir_97aefd0d527b934f1d99a682da8fe6a9.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
