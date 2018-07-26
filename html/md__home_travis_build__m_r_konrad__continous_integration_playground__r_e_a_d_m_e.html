@@ -84,7 +84,7 @@ $(document).ready(function(){initNavTree('md__home_travis_build__m_r_konrad__con
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -118,9 +118,11 @@ $(document).ready(function(){initNavTree('md__home_travis_build__m_r_konrad__con
 </ul>
 <h1>Notes</h1>
 <ul>
-<li>entries in <code>.gitmodules</code> are added automatically by calling for example <code>git submodule add <a href="https://github.com/google/googletest.git">https://github.com/google/googletest.git</a> ./thirdParty/googletest</code></li>
-<li>to generate coverage <code>lcov --capture --directory . --output-file coverage.info</code></li>
-<li>to generate coverage html report <code>genhtml coverage.info --output-directory out</code> </li>
+<li>entries in <code>.gitmodules</code> are added automatically by calling in console for example <code>git submodule add <a href="https://github.com/google/googletest.git">https://github.com/google/googletest.git</a> ./thirdParty/googletest</code><ul>
+<li>to generate documentation we need to tell doxygen what dirs it should use as input (<code>INPUT</code> in Doxyfile). As in this Doxyfile I assigned it to env variable (<code>INPUT = /home/travis/build/MRKonrad/ContinousIntegrationPlayground</code>), we have to define the variable. This is done in <code>.travis.yml</code>, but if you want to do it <em>locally</em> type in console: ```console export INPUT_FOR_DOXY=". ./app ./lib ./tests" # to define the env variable doxygen Doxyfile # to run doxygen ``<code></code></li>
+</ul>
+</li>
+<li><code>to generate coverage *locally*:</code>lcov &ndash;capture &ndash;directory . &ndash;output-file coverage.info&lt;tt&gt;, to generate coverage html reportgenhtml coverage.info &ndash;output-directory out` </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

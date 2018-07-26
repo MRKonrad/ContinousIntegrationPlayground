@@ -22,7 +22,9 @@ Based on
 
 
 \begin{DoxyItemize}
-\item entries in {\ttfamily .gitmodules} are added automatically by calling for example {\ttfamily git submodule add \href{https://github.com/google/googletest.git}{\tt https\-://github.\-com/google/googletest.\-git} ./third\-Party/googletest}
-\item to generate coverage {\ttfamily lcov -\/-\/capture -\/-\/directory . -\/-\/output-\/file coverage.\-info}
-\item to generate coverage html report {\ttfamily genhtml coverage.\-info -\/-\/output-\/directory out} 
+\item entries in {\ttfamily .gitmodules} are added automatically by calling in console for example {\ttfamily git submodule add \href{https://github.com/google/googletest.git}{\tt https\-://github.\-com/google/googletest.\-git} ./third\-Party/googletest}
+\begin{DoxyItemize}
+\item to generate documentation we need to tell doxygen what dirs it should use as input ({\ttfamily I\-N\-P\-U\-T} in Doxyfile). As in this Doxyfile I assigned it to env variable ({\ttfamily I\-N\-P\-U\-T = /home/travis/build/\-M\-R\-Konrad/\-Continous\-Integration\-Playground}), we have to define the variable. This is done in {\ttfamily .travis.\-yml}, but if you want to do it {\itshape locally} type in console\-: ```console export I\-N\-P\-U\-T\-\_\-\-F\-O\-R\-\_\-\-D\-O\-X\-Y=\char`\"{}. ./app ./lib ./tests\char`\"{} \# to define the env variable doxygen Doxyfile \# to run doxygen ``{\ttfamily }
+\end{DoxyItemize}
+\item {\ttfamily to generate coverage $\ast$locally$\ast$\-:}lcov --capture --directory . --output-\/file coverage.\-info$<$tt$>$, to generate coverage html reportgenhtml coverage.\-info --output-\/directory out` 
 \end{DoxyItemize}

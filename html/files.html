@@ -67,7 +67,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li class="current"><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -90,7 +89,7 @@ $(document).ready(function(){initNavTree('files.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -105,14 +104,8 @@ $(document).ready(function(){initNavTree('files.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock">Here is a list of all documented files with brief descriptions:</div><div class="directory">
-<div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span>]</div><table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><img id="arr_0_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('0_')"/><img id="img_0_" src="ftv2folderopen.png" alt="-" width="24" height="22" onclick="toggleFolder('0_')"/><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html" target="_self">app</a></td><td class="desc"></td></tr>
-<tr id="row_0_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2doc.png" alt="*" width="24" height="22" /><a class="el" href="main_8cpp.html" target="_self">main.cpp</a></td><td class="desc">A Documented file with main </td></tr>
-<tr id="row_1_" class="even"><td class="entry"><img id="arr_1_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('1_')"/><img id="img_1_" src="ftv2folderopen.png" alt="-" width="24" height="22" onclick="toggleFolder('1_')"/><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html" target="_self">lib</a></td><td class="desc"></td></tr>
-<tr id="row_1_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><a href="mylib_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><a class="el" href="mylib_8h.html" target="_self">mylib.h</a></td><td class="desc">A Documented file </td></tr>
-<tr id="row_2_" class="even"><td class="entry"><img id="arr_2_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('2_')"/><img id="img_2_" src="ftv2folderopen.png" alt="-" width="24" height="22" onclick="toggleFolder('2_')"/><a class="el" href="dir_59425e443f801f1f2fd8bbe4959a3ccf.html" target="_self">tests</a></td><td class="desc"></td></tr>
-<tr id="row_2_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2doc.png" alt="*" width="24" height="22" /><a class="el" href="mytest_8cpp.html" target="_self">mytest.cpp</a></td><td class="desc">A Documented test file </td></tr>
-<tr id="row_3_" class="even"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><a href="_my_cmake_config_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>MyCmakeConfig.h</b></td><td class="desc"></td></tr>
+<table class="directory">
+<tr id="row_0_" class="even"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><a href="_my_cmake_config_8h_source.html"><img src="ftv2doc.png" alt="*" width="24" height="22" /></a><b>MyCmakeConfig.h</b></td><td class="desc"></td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
