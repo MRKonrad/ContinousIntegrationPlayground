@@ -84,6 +84,9 @@ after_success:
 
   - pwd
   - ls ${TRAVIS_BUILD_DIR}
+  - ls /home/travis
+  - echo ~
+  - echo ${INPUT_FOR_DOXY}
   # Generate and deploy documentation only in linux g++
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
       cd $TRAVIS_BUILD_DIR;
