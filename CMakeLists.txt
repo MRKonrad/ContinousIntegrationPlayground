@@ -5,45 +5,35 @@
 cmake_minimum_required (VERSION 2.8)
 
 project (ContinousIntegrationPlayground)
-include(gtest.cmake)
 
 # Compiler flags
 set (CMAKE_CXX_STANDARD 98)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Compiler flags for coveralls
-if (UNIX)
-    set (CMAKE_CXX_FLAGS "-fprofile-arcs -ftest-coverage")
-endif(UNIX)
+# configure a header file to pass some of the CMake settings to the source code
+configure_file ("${PROJECT_SOURCE_DIR}/MyCmakeConfig.h.in" "${PROJECT_BINARY_DIR}/MyCmakeConfig.h")
+include_directories ("${PROJECT_BINARY_DIR}")
 
 ####################
 ### MAIN PROGRAM ###
 ####################
 
-add_executable(ContinousIntegrationPlayground main.cpp)
+# list of source files
+file(GLOB_RECURSE APP_FILES app/*.c* app/*.h* app/*.t*)
+file(GLOB_RECURSE LIB_FILES lib/*.c* lib/*.h* lib/*.t*)
+set(LIB_FILES ${LIB_FILES} "${PROJECT_BINARY_DIR}/MyCmakeConfig.h")
+
+#message("APP_FILES:" ${APP_FILES})
+#message("LIB_FILES:" ${LIB_FILES})
+
+include_directories(lib)
+
+add_executable(ContinousIntegrationPlaygroundExe ${APP_FILES} ${LIB_FILES})
+add_library(ContinousIntegrationPlaygroundLib ${APP_FILES} ${LIB_FILES})
 
 ###############
 ### TESTING ###
 ###############
 
-enable_testing ()
+add_subdirectory(tests)
 
-# Threads are needed for testing
-find_package (Threads REQUIRED)
-target_link_libraries(gtest ${CMAKE_THREAD_LIBS_INIT})
-
-# Test executable
-add_executable(runUnitTests mytest.cpp)
-target_link_libraries (runUnitTests PUBLIC gtest)
-add_test(NAME ctest_tests COMMAND runUnitTests)
-
-########################
-### TESTING COVERAGE ###
-########################
-
-# Coveralls
-SET(COVERAGE OFF CACHE BOOL "Coverage")
-if (COVERAGE)
-    target_compile_options(runUnitTests PRIVATE --coverage)
-    target_link_libraries(runUnitTests PRIVATE --coverage)
-endif()

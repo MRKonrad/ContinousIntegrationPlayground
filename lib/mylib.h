@@ -1,21 +1,17 @@
-/*! \file mylib.h
-    \brief A Documented file.
-
-    Details.
-*/
-
-//
-// Created by Konrad Werys on 7/24/18.
-//
+/*!
+ * \brief A Documented file.
+ * \details Details of the file should be here. LOL
+ * \author Konrad Werys
+ * \date $Date: 2018/08/24 $
+ */
 
 #ifndef CONTINOUSINTEGRATIONPLAYGROUND_MYLIB_H
 #define CONTINOUSINTEGRATIONPLAYGROUND_MYLIB_H
 
 /**
- * aaaaa
- * \brief Not sure what to put here
+ * \brief a dummy function that returns the output integer
  * @param input
- * @return
+ * @return input
  */
 int dummyFunction(int input){
     return input;

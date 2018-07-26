@@ -1,6 +1,6 @@
 # Continous Integration Playground
 
-See the [DOCS PAGE](https://mrkonrad.github.io/ContinousIntegrationPlayground/)
+See the [DOCS PAGE](https://mrkonrad.github.io/ContinousIntegrationPlayground/html/).
 
 | System        | Status        |
 |:-------------:|:-------------:|
@@ -11,9 +11,9 @@ See the [DOCS PAGE](https://mrkonrad.github.io/ContinousIntegrationPlayground/)
 
 # Inspiration
 Based on 
-* [this repo](https://github.com/LearningByExample/ModernCppCI)
-* [this post](http://david-grs.github.io/cpp-clang-travis-cmake-gtest-coveralls-appveyor/) about travis, cmake, gtest, coveralls and appveyor
-* [this gist](https://gist.github.com/vidavidorra/7ed6166a46c537d3cbd2) about doxygen, travis and github 
+* juan-medina's [this post](https://juan-medina.com/2017/07/01/moderncppci/) and [this repo](https://github.com/LearningByExample/ModernCppCI) about travis, appveyor, cmake and catch   
+* david-grs' [this post](http://david-grs.github.io/cpp-clang-travis-cmake-gtest-coveralls-appveyor/) and [this repo](https://github.com/david-grs/clang_travis_cmake_gtest_coveralls_example) about travis, cmake, gtest, coveralls and appveyor
+* vidavidorra's [this gist](https://gist.github.com/vidavidorra/7ed6166a46c537d3cbd2) about doxygen, travis and github 
 
 # Notes
 * entries in  `.gitmodules` are added automatically by calling for example  
