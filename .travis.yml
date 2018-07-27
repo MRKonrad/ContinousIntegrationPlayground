@@ -75,35 +75,35 @@ after_success:
       chmod +x generateDocumentationAndDeploy.sh;
       ./generateDocumentationAndDeploy.sh;
     fi
-  # everyone should be able to execute
-  - ls -la
-  - chmod -x ContinousIntegrationPlaygroundExe # everyone should be able to execute
-  - ls -la
-  - chmod 744 ContinousIntegrationPlaygroundExe # everyone should be able to execute
-  - ls -la
-  - cp ContinousIntegrationPlaygroundExe ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
-  - zip -r executable.zip ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
-  - ls -la
-  - mkdir deployment
-  - cp executable.zip deployment/executable.zip
+#  # everyone should be able to execute
+#  - ls -la
+#  - chmod -x ContinousIntegrationPlaygroundExe # everyone should be able to execute
+#  - ls -la
+#  - chmod 744 ContinousIntegrationPlaygroundExe # everyone should be able to execute
+#  - ls -la
+#  - cp ContinousIntegrationPlaygroundExe ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
+#  - zip -r executable.zip ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
+#  - ls -la
+#  - mkdir deployment
+#  - cp executable.zip deployment/executable.zip
 
 before_deploy:
   - echo "Ready to deploy?"
 
-  # everyone should be able to execute
+#  # everyone should be able to execute
+#  - ls -la
+#  - chmod -x ContinousIntegrationPlaygroundExe # everyone should be able to execute
+#  - ls -la
+#  - chmod 744 ContinousIntegrationPlaygroundExe # everyone should be able to execute
+#  - ls -la
+#  - cp ContinousIntegrationPlaygroundExe ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
+#  - zip -r executable.zip ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
   - ls -la
-  - chmod -x ContinousIntegrationPlaygroundExe # everyone should be able to execute
-  - ls -la
-  - chmod 744 ContinousIntegrationPlaygroundExe # everyone should be able to execute
-  - ls -la
-  - cp ContinousIntegrationPlaygroundExe ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
-  - zip -r executable.zip ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
-  - ls -la
-  - mkdir deployment
-  - cp executable.zip deployment/executable.zip
-#  # copy the file you want to deploy to the deployment folder. Should I replace it with make install?
 #  - mkdir deployment
-#  - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
+#  - cp executable.zip deployment/executable.zip
+#  # copy the file you want to deploy to the deployment folder. Should I replace it with make install?
+  - mkdir deployment
+  - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
 #  - chmod -x deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME} # everyone should be able to execute
 
 
