@@ -94,18 +94,23 @@ after_success:
       ./generateDocumentationAndDeploy.sh;
     fi
 
-before_deploy: "echo 'Ready to deploy?'"
+before_deploy:
+  - echo "Ready to deploy?"
+  - cd ${TRAVIS_BUILD_DIR}
+  - chmod -x ContinousIntegrationPlaygroundExe
+  - mkdir deployment
+  - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_$TRAVIS_BRANCH_$TRAVIS_OS_NAME
+
 deploy:
   provider: releases
   api_key:
     secure: hktHPt7mF39LVJhyABALXqMLv0XSrifhYSqi3pV/1shHgsNvMSx63igUKMZBZPnuxsclV8i0PGxKZxScu2Mh28PFJtyfEcD1W+FZURmOS9Fr3FhvlNuiH4SEbVacc0sS8DJEsV8uCeJZj/+cIJMFDmuEiKuSaGNTpFykh8gxJE2tHL7nkijOFUl7PDHWOE7oTGaYd+N0vntk5E26dZ8W8rDDcf8iKhxkGM8wyqDKgrZyp53a6AoadhxrPwUyoM0zuiQWp8pzQAyGMp828dWDxl+NJ/tpz/XtdKMJrLtiD+4ecVHg9gX37r86pTOpfTLDeedfPwIGhjja03G/ED9ZqgySnT3aEdpwae9WQfH6rYmCwg/RKvmnI1y9cFINO8hxwx/GcgusvIibkiKJqPamKkHBTTN9qbHipXXZj+KupPN8Qf0xj8sZRqYEV9eJQaBjKLw8dbi93JtpPRepBmCL8+jGZ7mCDZEJBeUDhXksAMTuecsR2UeKX9+2IydZpj1oEDsgVsL8kC3m1DR2mAZUdxCrjIcwjhosyUNO3GHqKkpnmRkqnF9zPEglPs4RuE8gTGTskpOPd0E/0wQRQAlcCZaCxgrt5a2t7d4qHz4fy7cKeM7nt73eW11I4/ZLgYiXcFk9T7dJuqtHFqOWpi64tV8NYtibbamib9D07zmhiS0=
   file_glob: true
   file:
-    - lib/*
-    - "ContinousIntegrationPlaygroundExe"
+#    - lib/*
+#    - "ContinousIntegrationPlaygroundExe"
+    - deployment/*
   skip_cleanup: true
   on:
     tags: true
-#    repo: MRKonrad/
-    os: osx
 
