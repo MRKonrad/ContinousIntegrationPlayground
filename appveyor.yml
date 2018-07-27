@@ -29,17 +29,23 @@ build:
   parallel: true                                   # enable MSBuild parallel builds
   verbosity: normal                                # MSBuild verbosity level {quiet|minimal|normal|detailed}
 
+after_build:
+  - echo %APPVEYOR_BUILD_FOLDER%
+  - echo %PLATFORM%
+  - echo %APPVEYOR_REPO_BRANCH%
+  - echo %APPVEYOR_REPO_TAG_NAME%
+  - echo %CONFIGURATION%
+  - cd
+  - dir %APPVEYOR_BUILD_FOLDER%
+  - dir .
+
 test_script:
   - cd bin
   - ctest -V -j2 -C %CONFIGURATION%
 
 before_deploy:
   - echo "Ready to deploy?"
-  - echo %APPVEYOR_BUILD_FOLDER%
-  - echo %PLATFORM%
-  - echo %APPVEYOR_REPO_BRANCH%
-  - echo %APPVEYOR_REPO_TAG_NAME%
-  - echo %CONFIGURATION%
+
 
 #  - cd ${TRAVIS_BUILD_DIR}
 #  - chmod -x ContinousIntegrationPlaygroundExe
