@@ -52,12 +52,13 @@ before_deploy:
 #  - mkdir deployment
 #  - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_$TRAVIS_BRANCH_$TRAVIS_OS_NAME
 deploy:
-  release: ContinousIntegrationPlayground-v$(appveyor_build_version)
-  description: 'AppVeyor release description'
+#  release: ContinousIntegrationPlayground-v$(appveyor_build_version)
+  description: 'Release description'
   provider: GitHub
   auth_token:
     secure: Nmbbo4JCoK5AuN1ugWmE/c8/BAXlpz8Lb7piWDcAAWnT/GFa7fwL20GbXyU9AZSn
-  artifact: %APPVEYOR_BUILD_FOLDER%\bin\tests\%CONFIGURATION%\ContinousIntegrationPlayground.exe
+
+  artifact: %APPVEYOR_BUILD_FOLDER%\bin\tests\Release\ContinousIntegrationPlayground.exe
   draft: false
   prerelease: false
   on:
