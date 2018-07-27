@@ -1,4 +1,9 @@
-# ContinousIntegrationPlayground
+#------------------------------------#
+#   ContinousIntegrationPlayground   #
+#------------------------------------#
+
+# TODO: how about configuring cmake to install instead of copying the executable?
+
 
 sudo: false
 
@@ -12,15 +17,15 @@ compiler:
   - gcc
   - clang
 
-# Blacklist
 branches:
-  # for the documentation
+  # Blacklist the documentation branch
   except:
     - gh-pages
 
 # Environment variables
 env:
   global:
+    # used in documentation script
     - GH_REPO_NAME: ContinousIntegrationPlayground
     - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
     - INPUT_FOR_DOXY: "'$(TRAVIS_BUILD_DIR) $(TRAVIS_BUILD_DIR)/app $(TRAVIS_BUILD_DIR)/lib $(TRAVIS_BUILD_DIR)/tests'"
@@ -30,10 +35,10 @@ addons:
   apt:
     sources:
       # coveralls only in linux g++
-      - ubuntu-toolchain-r-test
-#      - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
-#          ubuntu-toolchain-r-test;
-#        fi
+#      - ubuntu-toolchain-r-test
+      - if [ "$CXX" == "g++" ]; then
+          ubuntu-toolchain-r-test;
+        fi
     packages:
       # for the documentation
       - doxygen

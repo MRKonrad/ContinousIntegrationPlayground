@@ -1,5 +1,6 @@
-# version string format -- This will be overwritten later anyway
-version: "{build}"
+#------------------------------------#
+#   ContinousIntegrationPlayground   #
+#------------------------------------#
 
 os:
   - Visual Studio 2017
@@ -30,17 +31,7 @@ build:
   verbosity: normal                                # MSBuild verbosity level {quiet|minimal|normal|detailed}
 
 after_build:
-  - echo %APPVEYOR_BUILD_FOLDER%
-  - echo %PLATFORM%
-  - echo %APPVEYOR_REPO_BRANCH%
-  - echo %APPVEYOR_REPO_TAG_NAME%
-  - echo %CONFIGURATION%
-  - cd
-  - dir %APPVEYOR_BUILD_FOLDER%
-  - dir .
-  - dir bin\Release\*.*
-  - mkdir deployment
-  - copy bin\%CONFIGURATION%\ContinousIntegrationPlaygroundExe.exe deployment\ContinousIntegrationPlaygroundExe_%APPVEYOR_REPO_BRANCH%_%CONFIGURATION%.exe
+  - copy bin\%CONFIGURATION%\ContinousIntegrationPlaygroundExe.exe deployment\ContinousIntegrationPlaygroundExe_%APPVEYOR_REPO_BRANCH%_%PLATFORM%.exe
 
 test_script:
   - cd bin
@@ -68,5 +59,4 @@ deploy:
   force_update: true
   on:
     appveyor_repo_tag: true        # deploy on tag push only
-    platform: x64
     configuration: Release
