@@ -7,7 +7,6 @@
 #       if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
 
 sudo: false
-
 language: cpp
 
 os:
@@ -68,18 +67,9 @@ script:
   - ./tests/ContinousIntegrationPlaygroundTests
 
 after_success:
-  # coveralls only in linux g++
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
-      coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" ;
-    fi
-
-  - pwd
-  - ls ${TRAVIS_BUILD_DIR}
-  - ls /home/travis
-  - echo ~
-  - echo ${INPUT_FOR_DOXY}
   # Generate and deploy documentation only in linux g++
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
+      coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" ;
       cd $TRAVIS_BUILD_DIR;
       chmod +x generateDocumentationAndDeploy.sh;
       ./generateDocumentationAndDeploy.sh;
@@ -87,17 +77,20 @@ after_success:
 
 before_deploy:
   - echo "Ready to deploy?"
-  - echo ${CXX}
   - cd ${TRAVIS_BUILD_DIR}
-  - chmod 777 ContinousIntegrationPlaygroundExe
+
+  # everyone should be able to execute
+  - chmod 777 ContinousIntegrationPlaygroundExe # everyone should be able to execute
+
+  # copty the file you want to deploy to the deployment folder. Should I replace it with make install?
   - mkdir deployment
   - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
 
 deploy:
-  provider: releases
+  provider: releases # GitHub
   api_key:
     secure: hktHPt7mF39LVJhyABALXqMLv0XSrifhYSqi3pV/1shHgsNvMSx63igUKMZBZPnuxsclV8i0PGxKZxScu2Mh28PFJtyfEcD1W+FZURmOS9Fr3FhvlNuiH4SEbVacc0sS8DJEsV8uCeJZj/+cIJMFDmuEiKuSaGNTpFykh8gxJE2tHL7nkijOFUl7PDHWOE7oTGaYd+N0vntk5E26dZ8W8rDDcf8iKhxkGM8wyqDKgrZyp53a6AoadhxrPwUyoM0zuiQWp8pzQAyGMp828dWDxl+NJ/tpz/XtdKMJrLtiD+4ecVHg9gX37r86pTOpfTLDeedfPwIGhjja03G/ED9ZqgySnT3aEdpwae9WQfH6rYmCwg/RKvmnI1y9cFINO8hxwx/GcgusvIibkiKJqPamKkHBTTN9qbHipXXZj+KupPN8Qf0xj8sZRqYEV9eJQaBjKLw8dbi93JtpPRepBmCL8+jGZ7mCDZEJBeUDhXksAMTuecsR2UeKX9+2IydZpj1oEDsgVsL8kC3m1DR2mAZUdxCrjIcwjhosyUNO3GHqKkpnmRkqnF9zPEglPs4RuE8gTGTskpOPd0E/0wQRQAlcCZaCxgrt5a2t7d4qHz4fy7cKeM7nt73eW11I4/ZLgYiXcFk9T7dJuqtHFqOWpi64tV8NYtibbamib9D07zmhiS0=
-  file_glob: true
+  file_glob: true # to use wildcards
   file:
 #    - lib/*
 #    - "ContinousIntegrationPlaygroundExe"
@@ -105,6 +98,4 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    condition: ${CXX} == "g++"
-#    compiler: gcc # I guess I have to pick one
-
+    condition: ${CXX} == "g++" # I guess I have to pick one compiler

@@ -2,9 +2,11 @@
 #   ContinousIntegrationPlayground   #
 #------------------------------------#
 
+#version: '0.9.{build}'
+
 os:
   - Visual Studio 2017
-#  - Visual Studio 2015
+  - Visual Studio 2015
 
 init:
   - git config --global core.autocrlf input
@@ -15,11 +17,11 @@ install:
   - git submodule update --init --recursive
 
 platform:
-#  - Win32
+  - Win32
   - x64
 
 configuration:
-#  - Debug
+  - Debug
   - Release
 
 before_build:
@@ -35,8 +37,7 @@ after_build:
   - copy bin\%CONFIGURATION%\ContinousIntegrationPlaygroundExe.exe deployment\ContinousIntegrationPlaygroundExe_%APPVEYOR_REPO_BRANCH%_%PLATFORM%.exe
 
 test_script:
-  - cd bin
-  - ctest -V -j2 -C %CONFIGURATION%
+  - bin\tests\%CONFIGURATION%\ContinousIntegrationPlaygroundTests.exe
 
 artifacts:
   - path: deployment\*.*
@@ -44,11 +45,6 @@ artifacts:
 before_deploy:
   - echo "Ready to deploy?"
 
-
-#  - cd ${TRAVIS_BUILD_DIR}
-#  - chmod -x ContinousIntegrationPlaygroundExe
-#  - mkdir deployment
-#  - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_$TRAVIS_BRANCH_$TRAVIS_OS_NAME
 deploy:
 #  release: ContinousIntegrationPlayground-v$(appveyor_build_version)
   description: 'Release description'
