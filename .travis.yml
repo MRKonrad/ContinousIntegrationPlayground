@@ -3,7 +3,8 @@
 #------------------------------------#
 
 # TODO: how about configuring cmake to install instead of copying the executable?
-
+# TODO: it would be nice to 'addons: apt: sources:' conditional. Unfortunatelly if (like the one below) does not work:
+#       if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
 
 sudo: false
 
@@ -34,33 +35,18 @@ env:
 addons:
   apt:
     sources:
-      # coveralls only in linux g++
-#      - ubuntu-toolchain-r-test
-      - if [ "$CXX" == "g++" ]; then
-          ubuntu-toolchain-r-test;
-        fi
+      ubuntu-toolchain-r-test;
     packages:
-      # for the documentation
       - doxygen
       - doxygen-doc
       - doxygen-latex
       - doxygen-gui
       - graphviz
-#      - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
-#          doxygen;
-#          doxygen-doc;
-#          doxygen-latex;
-#          doxygen-gui;
-#          graphviz;
-#        fi
 
 before_install:
-  - echo $LANG
-  - echo $LC_ALL
   - cd ${TRAVIS_BUILD_DIR}
-  - ls ${TRAVIS_BUILD_DIR}
 
-  # coveralls only in linux g++
+  # install coveralls only in linux g++
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
       pip install --user cpp-coveralls;
     fi
@@ -76,7 +62,7 @@ script:
 
   # this is make
   - make -j8
-  - cmake --build .
+#  - cmake --build .
 
   # needed to get the coverage
   - ./tests/ContinousIntegrationPlaygroundTests
