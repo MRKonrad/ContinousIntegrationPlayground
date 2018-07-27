@@ -44,6 +44,10 @@ test_script:
   - cd bin
   - ctest -V -j2 -C %CONFIGURATION%
 
+artifacts:
+  - path: bin\Release\*.*
+    name: ContinousIntegrationPlaygroundExe
+
 before_deploy:
   - echo "Ready to deploy?"
 
@@ -58,7 +62,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: Nmbbo4JCoK5AuN1ugWmE/c8/BAXlpz8Lb7piWDcAAWnT/GFa7fwL20GbXyU9AZSn
-  artifact: bin\Release\*.*
+#  artifact: bin\Release\*.*
   draft: false
   prerelease: false
   force_update: true
