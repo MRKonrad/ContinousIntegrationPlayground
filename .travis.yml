@@ -96,6 +96,7 @@ after_success:
 
 before_deploy:
   - echo "Ready to deploy?"
+  - echo ${CXX}
   - cd ${TRAVIS_BUILD_DIR}
   - chmod 777 ContinousIntegrationPlaygroundExe
   - mkdir deployment
@@ -113,5 +114,6 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    compiler: gcc # I guess I have to pick one
+    condition: ${CXX} == "g++"
+#    compiler: gcc # I guess I have to pick one
 

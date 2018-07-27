@@ -57,7 +57,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: Nmbbo4JCoK5AuN1ugWmE/c8/BAXlpz8Lb7piWDcAAWnT/GFa7fwL20GbXyU9AZSn
-  artifact: $(APPVEYOR_BUILD_FOLDER)\bin\tests\Release\ContinousIntegrationPlayground.exe
+  artifact: $(APPVEYOR_BUILD_FOLDER)\bin\Release\ContinousIntegrationPlaygroundExe.exe
   draft: false
   prerelease: false
   force_update: true
