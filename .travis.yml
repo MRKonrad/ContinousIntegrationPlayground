@@ -80,7 +80,11 @@ before_deploy:
   - echo "Ready to deploy?"
 
   # everyone should be able to execute
+  - ls -la
   - chmod -x ContinousIntegrationPlaygroundExe # everyone should be able to execute
+  - ls -la
+  - chmod 744 ContinousIntegrationPlaygroundExe # everyone should be able to execute
+  - ls -la
   - cp ContinousIntegrationPlaygroundExe ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
   - zip -r executable.zip ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
   - ls -la
