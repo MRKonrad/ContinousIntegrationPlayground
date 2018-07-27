@@ -2,6 +2,10 @@
 
 See the [DOCS PAGE](https://mrkonrad.github.io/ContinousIntegrationPlayground/html/).
 
+
+![AppVeyor tests](https://img.shields.io/appveyor/tests/MRKonrad/continousintegrationplayground.svg)
+
+
 | System        | Status        |
 |:-------------:|:-------------:|
 | Travis (OSX/Linux) | [![Travis (.org)](https://img.shields.io/travis/MRKonrad/ContinousIntegrationPlayground.svg?style=for-the-badge)](https://travis-ci.org/MRKonrad/ContinousIntegrationPlayground) | 

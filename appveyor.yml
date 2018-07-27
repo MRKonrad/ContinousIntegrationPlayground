@@ -6,7 +6,7 @@
 
 os:
   - Visual Studio 2017
-  - Visual Studio 2015
+#  - Visual Studio 2015
 
 init:
   - git config --global core.autocrlf input
@@ -17,11 +17,11 @@ install:
   - git submodule update --init --recursive
 
 platform:
-  - Win32
+#  - Win32
   - x64
 
 configuration:
-  - Debug
+#  - Debug
   - Release
 
 before_build:
@@ -37,6 +37,7 @@ after_build:
   - copy bin\%CONFIGURATION%\ContinousIntegrationPlaygroundExe.exe deployment\ContinousIntegrationPlaygroundExe_%APPVEYOR_REPO_BRANCH%_%PLATFORM%.exe
 
 test_script:
+  # should I add sth like this? https://github.com/mgerhardy/caveexpress/blob/master/appveyor.yml
   - bin\tests\%CONFIGURATION%\ContinousIntegrationPlaygroundTests.exe
 
 artifacts:
@@ -46,7 +47,7 @@ before_deploy:
   - echo "Ready to deploy?"
 
 deploy:
-#  release: ContinousIntegrationPlayground-v$(appveyor_build_version)
+  # release: ContinousIntegrationPlayground-v$(appveyor_build_version)
   description: 'Release description'
   provider: GitHub
   auth_token:
