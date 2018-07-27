@@ -39,14 +39,15 @@ after_build:
   - dir %APPVEYOR_BUILD_FOLDER%
   - dir .
   - dir bin\Release\*.*
+  - mkdir deployment
+  - copy bin\$(CONFIGURATION)\ContinousIntegrationPlaygroundExe.exe deployment/ContinousIntegrationPlaygroundExe_%APPVEYOR_REPO_BRANCH%_%CONFIGURATION%.exe
 
 test_script:
   - cd bin
   - ctest -V -j2 -C %CONFIGURATION%
 
 artifacts:
-  - path: bin\$(CONFIGURATION)\ContinousIntegrationPlaygroundExe.exe
-    name: ContinousIntegrationPlaygroundExe_$(platform).exe
+  - path: deployment\*.*
 
 before_deploy:
   - echo "Ready to deploy?"
