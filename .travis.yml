@@ -12,11 +12,11 @@ language: cpp
 
 os:
   - linux
-  # - osx
+   - osx
 
 compiler:
   - gcc
-  # - clang
+  - clang
 
 branches:
   # Blacklist the documentation branch
@@ -30,7 +30,7 @@ env:
     - GH_REPO_NAME: ContinousIntegrationPlayground
     - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
     - INPUT_FOR_DOXY: "'. ./app ./lib ./tests'"
-    - OUTPUT_FOR_DOXY: "'$(TRAVIS_BUILD_DIR)/code_docs/ContinousIntegrationPlayground'"
+    - OUTPUT_FOR_DOXY: "'$(TRAVIS_BUILD_DIR)/code_docs/$(GH_REPO_NAME)'"
     - GH_REPO_REF: github.com/MRKonrad/ContinousIntegrationPlayground.git
 
 addons:
