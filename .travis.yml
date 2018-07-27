@@ -11,12 +11,12 @@ sudo: false
 language: cpp
 
 os:
-  - linux
-   - osx
+  # - linux
+  - osx
 
 compiler:
   - gcc
-  - clang
+  # - clang
 
 branches:
   # Blacklist the documentation branch
