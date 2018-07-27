@@ -35,13 +35,13 @@ test_script:
 
 before_deploy:
   - echo "Ready to deploy?"
-  - echo ${APPVEYOR_BUILD_FOLDER}
-  - echo ${PLATFORM}
-  - echo ${APPVEYOR_REPO_BRANCH}
-  - echo ${APPVEYOR_REPO_TAG_NAME}
-  - echo ${CONFIGURATION}
+  - echo %APPVEYOR_BUILD_FOLDER%
+  - echo %PLATFORM%
+  - echo %APPVEYOR_REPO_BRANCH%
+  - echo %APPVEYOR_REPO_TAG_NAME%
+  - echo %CONFIGURATION%
 
-  - cd ${TRAVIS_BUILD_DIR}
+#  - cd ${TRAVIS_BUILD_DIR}
 #  - chmod -x ContinousIntegrationPlaygroundExe
 #  - mkdir deployment
 #  - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_$TRAVIS_BRANCH_$TRAVIS_OS_NAME

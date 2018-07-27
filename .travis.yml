@@ -97,9 +97,9 @@ after_success:
 before_deploy:
   - echo "Ready to deploy?"
   - cd ${TRAVIS_BUILD_DIR}
-  - chmod -x ContinousIntegrationPlaygroundExe
+  - chmod 777 ContinousIntegrationPlaygroundExe
   - mkdir deployment
-  - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_$TRAVIS_BRANCH_$TRAVIS_OS_NAME
+  - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
 
 deploy:
   provider: releases
@@ -113,4 +113,5 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+    compiler: gcc # I guess I have to pick one
 
