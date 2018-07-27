@@ -38,6 +38,7 @@ after_build:
   - cd
   - dir %APPVEYOR_BUILD_FOLDER%
   - dir .
+  - dir bin\Release\*.*
 
 test_script:
   - cd bin
@@ -57,7 +58,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: Nmbbo4JCoK5AuN1ugWmE/c8/BAXlpz8Lb7piWDcAAWnT/GFa7fwL20GbXyU9AZSn
-  artifact: \bin\$(configuration)\*.*
+  artifact: bin\$(configuration)\*.*
   draft: false
   prerelease: false
   force_update: true
