@@ -40,7 +40,7 @@ after_build:
   - dir .
   - dir bin\Release\*.*
   - mkdir deployment
-  - copy bin\$(CONFIGURATION)\ContinousIntegrationPlaygroundExe.exe deployment/ContinousIntegrationPlaygroundExe_%APPVEYOR_REPO_BRANCH%_%CONFIGURATION%.exe
+  - copy bin\$(CONFIGURATION)\ContinousIntegrationPlaygroundExe.exe deployment\ContinousIntegrationPlaygroundExe_%APPVEYOR_REPO_BRANCH%_%CONFIGURATION%.exe
 
 test_script:
   - cd bin
