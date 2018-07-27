@@ -57,9 +57,9 @@ deploy:
   provider: GitHub
   auth_token:
     secure: Nmbbo4JCoK5AuN1ugWmE/c8/BAXlpz8Lb7piWDcAAWnT/GFa7fwL20GbXyU9AZSn
+  artifact: $(APPVEYOR_BUILD_FOLDER)\bin\tests\Release\ContinousIntegrationPlayground.exe
   draft: false
   prerelease: false
-  artifact: %APPVEYOR_BUILD_FOLDER%\bin\tests\Release\ContinousIntegrationPlayground.exe
   on:
     appveyor_repo_tag: true        # deploy on tag push only
     platform: x64
