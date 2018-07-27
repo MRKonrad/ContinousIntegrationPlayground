@@ -50,7 +50,7 @@ deploy:
   description: 'Release description'
   provider: GitHub
   auth_token:
-    secure: tmI4AH7DK9HuGihjaftg0Vk9+j4LgSIfN3XiltK+1bI=
+    secure: Nmbbo4JCoK5AuN1ugWmE/c8/BAXlpz8Lb7piWDcAAWnT/GFa7fwL20GbXyU9AZSn
   artifact: bin\tests\Release\ContinousIntegrationPlaygroundgit Tests.exe
   draft: false
   prerelease: false
