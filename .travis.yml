@@ -12,11 +12,11 @@ language: cpp
 
 os:
   - linux
-  - osx
+#  - osx
 
 compiler:
   - gcc
-  - clang
+#  - clang
 
 branches:
   # Blacklist the documentation branch
@@ -29,7 +29,8 @@ env:
     # used in documentation script
     - GH_REPO_NAME: ContinousIntegrationPlayground
     - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
-    - INPUT_FOR_DOXY: "'$(TRAVIS_BUILD_DIR) $(TRAVIS_BUILD_DIR)/app $(TRAVIS_BUILD_DIR)/lib $(TRAVIS_BUILD_DIR)/tests'"
+    - INPUT_FOR_DOXY: "'. ./app ./lib ./tests'"
+    - OUTPUT_FOR_DOXY: "'$(TRAVIS_BUILD_DIR)/code_docs/$(GH_REPO_NAME)'"
     - GH_REPO_REF: github.com/MRKonrad/ContinousIntegrationPlayground.git
 
 addons:
@@ -71,14 +72,14 @@ after_success:
   # Generate and deploy documentation only in linux g++
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
       coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" ;
-      cd $TRAVIS_BUILD_DIR;
+#      cd $TRAVIS_BUILD_DIR;
       chmod +x generateDocumentationAndDeploy.sh;
       ./generateDocumentationAndDeploy.sh;
     fi
 
 before_deploy:
   - echo "Ready to deploy?"
-  - cd ${TRAVIS_BUILD_DIR}
+#  - cd ${TRAVIS_BUILD_DIR}
 
   # everyone should be able to execute
   - chmod 777 ContinousIntegrationPlaygroundExe # everyone should be able to execute

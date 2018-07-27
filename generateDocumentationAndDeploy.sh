@@ -40,6 +40,7 @@ echo 'Setting up the script...'
 set -e
 
 # Create a clean working directory for this script.
+cd $TRAVIS_BUILD_DIR
 mkdir code_docs
 cd code_docs
 
@@ -73,7 +74,11 @@ echo 'Generating Doxygen code documentation...'
 # Redirect both stderr and stdout to the log file AND the console.
 
 pwd
+cd $TRAVIS_BUILD_DIR
+pwd
 doxygen $DOXYFILE 2>&1 | tee doxygen.log
+pwd
+cd $OUTPUT_FOR_DOXY
 pwd
 
 ################################################################################
