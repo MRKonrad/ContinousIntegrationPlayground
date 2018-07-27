@@ -2,7 +2,7 @@
 ### TESTING ###
 ###############
 
-include(${PROJECT_SOURCE_DIR}/cmake/gtest.cmake)
+include(gtest.cmake)
 
 enable_testing ()
 

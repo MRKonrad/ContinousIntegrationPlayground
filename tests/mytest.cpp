@@ -13,7 +13,7 @@
  * Dummy test compares 1 with 1
  */
 TEST(ContinousIntegrationPlayground, DummyTest) {
-    EXPECT_EQ(1, 0);
+    EXPECT_EQ(1, 1);
 }
 
 /**
