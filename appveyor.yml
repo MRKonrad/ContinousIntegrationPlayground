@@ -60,6 +60,7 @@ deploy:
   artifact: $(APPVEYOR_BUILD_FOLDER)\bin\tests\Release\ContinousIntegrationPlayground.exe
   draft: false
   prerelease: false
+  force_update: true
   on:
     appveyor_repo_tag: true        # deploy on tag push only
     platform: x64
