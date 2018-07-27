@@ -80,12 +80,16 @@ before_deploy:
   - echo "Ready to deploy?"
 
   # everyone should be able to execute
-  #  - chmod -x ContinousIntegrationPlaygroundExe # everyone should be able to execute
-
-  # copy the file you want to deploy to the deployment folder. Should I replace it with make install?
+  - chmod -x ContinousIntegrationPlaygroundExe # everyone should be able to execute
+  - cp ContinousIntegrationPlaygroundExe ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
+  - zip -r executable.zip ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
   - mkdir deployment
-  - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
-  - chmod -x deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME} # everyone should be able to execute
+  - cp executable.zip deployment/executable.zip
+#  # copy the file you want to deploy to the deployment folder. Should I replace it with make install?
+#  - mkdir deployment
+#  - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
+#  - chmod -x deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME} # everyone should be able to execute
+
 
 deploy:
   provider: releases # GitHub
