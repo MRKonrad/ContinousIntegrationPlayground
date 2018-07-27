@@ -30,6 +30,8 @@ Based on
      git tag v0.1
      git push origin v0.1
      ```
+* tokens for deployment. Go to github/Settings/Developer settings/Personal access tokens. Generate a new one. To use in travis you have to have travis installed on your local system and encypt the token. To use in appveyor go to their website and encrypt the token.
+ 
 
 
 
