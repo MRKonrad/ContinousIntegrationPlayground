@@ -83,6 +83,7 @@ before_deploy:
   - chmod -x ContinousIntegrationPlaygroundExe # everyone should be able to execute
   - cp ContinousIntegrationPlaygroundExe ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
   - zip -r executable.zip ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
+  - ls -la
   - mkdir deployment
   - cp executable.zip deployment/executable.zip
 #  # copy the file you want to deploy to the deployment folder. Should I replace it with make install?
