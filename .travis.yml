@@ -75,17 +75,6 @@ after_success:
       chmod +x generateDocumentationAndDeploy.sh;
       ./generateDocumentationAndDeploy.sh;
     fi
-#  # everyone should be able to execute
-#  - ls -la
-#  - chmod -x ContinousIntegrationPlaygroundExe # everyone should be able to execute
-#  - ls -la
-#  - chmod 744 ContinousIntegrationPlaygroundExe # everyone should be able to execute
-#  - ls -la
-#  - cp ContinousIntegrationPlaygroundExe ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
-#  - zip -r executable.zip ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
-#  - ls -la
-#  - mkdir deployment
-#  - cp executable.zip deployment/executable.zip
 
 before_deploy:
   - echo "Ready to deploy?"
@@ -98,15 +87,18 @@ before_deploy:
 #  - ls -la
 #  - cp ContinousIntegrationPlaygroundExe ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
 #  - zip -r executable.zip ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
+
+  - echo exe_extended_name=ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME} # just a variable
+  # Problem: when deploying an executable as it is, somewhere in the process its permission to execute (-x) is lost.
+  # Solution: zip it and deploy the archive
   - ls -la
-#  - mkdir deployment
-#  - cp executable.zip deployment/executable.zip
-#  # copy the file you want to deploy to the deployment folder. Should I replace it with make install?
   - mkdir deployment
-  - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
-  - zip -r deployment/executable.zip deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
+  - cp ContinousIntegrationPlaygroundExe ${exe_extended_name}
+  - cd deployment
+  - zip -r ${exe_extended_name}.zip ../${exe_extended_name}
   - ls -la
-#  - chmod -x deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME} # everyone should be able to execute
+  - cd ..
+  - ls -la
 
 
 deploy:
