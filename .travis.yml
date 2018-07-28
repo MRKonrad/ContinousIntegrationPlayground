@@ -88,7 +88,7 @@ before_deploy:
 #  - cp ContinousIntegrationPlaygroundExe ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
 #  - zip -r executable.zip ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
 
-  - echo exe_extended_name=ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME} # just a variable
+  - export exe_extended_name=ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME} # just a variable
   # Problem: when deploying an executable as it is, somewhere in the process its permission to execute (-x) is lost.
   # Solution: zip it and deploy the archive
   - ls -la
