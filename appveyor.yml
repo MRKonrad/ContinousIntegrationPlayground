@@ -14,7 +14,7 @@ init:
   - ps: Update-AppveyorBuild -Version "$($env:APPVEYOR_REPO_BRANCH) - $($env:APPVEYOR_REPO_COMMIT)"
 
 environment:
-  EXE_EXTENDED_NAME: ContinousIntegrationPlaygroundExe_%APPVEYOR_REPO_TAG_NAME%_%PLATFORM%
+  EXE_EXTENDED_NAME: ContinousIntegrationPlaygroundExe_%APPVEYOR_REPO_TAG_NAME%_Windows_%PLATFORM%
 
 install:
   - git submodule update --init --recursive
