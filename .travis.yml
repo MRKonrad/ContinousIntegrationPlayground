@@ -79,26 +79,14 @@ after_success:
 before_deploy:
   - echo "Ready to deploy?"
 
-#  # everyone should be able to execute
-#  - ls -la
-#  - chmod -x ContinousIntegrationPlaygroundExe # everyone should be able to execute
-#  - ls -la
-#  - chmod 744 ContinousIntegrationPlaygroundExe # everyone should be able to execute
-#  - ls -la
-#  - cp ContinousIntegrationPlaygroundExe ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
-#  - zip -r executable.zip ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
-
   - export exe_extended_name=ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME} # just a variable
   # Problem: when deploying an executable as it is, somewhere in the process its permission to execute (-x) is lost.
   # Solution: zip it and deploy the archive
-  - ls -la
   - mkdir deployment
   - cp ContinousIntegrationPlaygroundExe ${exe_extended_name}
   - cd deployment
   - zip -r ${exe_extended_name}.zip ../${exe_extended_name}
-  - ls -la
   - cd ..
-  - ls -la
 
 
 deploy:

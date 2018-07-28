@@ -39,7 +39,7 @@ after_build:
   # change the name of the exe, zip it and copy the zip to the deployment folderś
   - cd bin\%CONFIGURATION%\
   - copy ContinousIntegrationPlaygroundExe.exe %EXE_EXTENDED_NAME%.exe
-  - zip -r %EXE_EXTENDED_NAME%.zip %EXE_EXTENDED_NAME%.exe
+  - 7z a %EXE_EXTENDED_NAME%.zip %EXE_EXTENDED_NAME%.exe # zip
   - cd ..
   - cd ..
   - mkdir deployment
