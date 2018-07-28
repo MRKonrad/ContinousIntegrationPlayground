@@ -13,11 +13,14 @@ init:
   # Set build version to git commit-hash
   - ps: Update-AppveyorBuild -Version "$($env:APPVEYOR_REPO_BRANCH) - $($env:APPVEYOR_REPO_COMMIT)"
 
+environment:
+  EXE_EXTENDED_NAME: ContinousIntegrationPlaygroundExe_%APPVEYOR_REPO_TAG_NAME%_%PLATFORM%
+
 install:
   - git submodule update --init --recursive
 
 platform:
-#  - Win32
+  - Win32
   - x64
 
 configuration:
@@ -33,8 +36,14 @@ build:
   verbosity: normal                                # MSBuild verbosity level {quiet|minimal|normal|detailed}
 
 after_build:
+  # change the name of the exe, zip it and copy the zip to the deployment folderś
+  - cd bin\%CONFIGURATION%\
+  - copy ContinousIntegrationPlaygroundExe.exe %EXE_EXTENDED_NAME%.exe
+  - zip -r %EXE_EXTENDED_NAME%.zip %EXE_EXTENDED_NAME%.exe
+  - cd ..
+  - cd ..
   - mkdir deployment
-  - copy bin\%CONFIGURATION%\ContinousIntegrationPlaygroundExe.exe deployment\ContinousIntegrationPlaygroundExe_%APPVEYOR_REPO_TAG_NAME%_%PLATFORM%.exe
+  - copy bin\%CONFIGURATION%\%EXE_EXTENDED_NAME%.zip deployment\%EXE_EXTENDED_NAME%.zip
 
 test_script:
   # TODO: should I add sth like this? https://github.com/mgerhardy/caveexpress/blob/master/appveyor.yml
