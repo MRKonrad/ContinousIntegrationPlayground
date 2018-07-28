@@ -104,6 +104,7 @@ before_deploy:
 #  # copy the file you want to deploy to the deployment folder. Should I replace it with make install?
   - mkdir deployment
   - cp ContinousIntegrationPlaygroundExe deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME}
+  - ls -la deployment
 #  - chmod -x deployment/ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME} # everyone should be able to execute
 
 
