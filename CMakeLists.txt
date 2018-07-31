@@ -22,10 +22,10 @@ include_directories ("${PROJECT_BINARY_DIR}")
 ### VNL ###
 ###########
 
-if($ENV{VXL_INSTALL_DIR})
-    set(VXL_INSTALL_DIR $ENV{VXL_INSTALL_DIR})
-else($ENV{VXL_INSTALL_DIR})
-    set(VXL_INSTALL_DIR ~/Code/todelete/vxl_install/)
+set (VXL_INSTALL_DIR $ENV{VXL_INSTALL_DIR})
+
+if(NOT VXL_INSTALL_DIR)
+    set(VXL_INSTALL_DIR ~/Code/todelete/vxl_install)
 endif()
 
 find_package(VXL PATHS ${VXL_INSTALL_DIR})
@@ -69,9 +69,9 @@ add_subdirectory(tests)
 ### DISPLAY ALL VARIABLES ###
 #############################
 
-get_cmake_property(_variableNames VARIABLES)
-list (SORT _variableNames)
-foreach (_variableName ${_variableNames})
-    message(STATUS "${_variableName}=${${_variableName}}")
-endforeach()
+#get_cmake_property(_variableNames VARIABLES)
+#list (SORT _variableNames)
+#foreach (_variableName ${_variableNames})
+#    message(STATUS "${_variableName}=${${_variableName}}")
+#endforeach()
 
