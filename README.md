@@ -16,14 +16,22 @@ Based on
 * vidavidorra's [this gist](https://gist.github.com/vidavidorra/7ed6166a46c537d3cbd2) about doxygen, travis and github 
 
 # Notes
+
+## Gitmodules
 * entries in `.gitmodules` are added automatically by calling in console for example 
  `git submodule add https://github.com/google/googletest.git ./thirdParty/googletest`
- * to generate documentation we need to tell doxygen what dirs it should use as input (`INPUT` in Doxyfile). As in this Doxyfile I assigned it to env variable (`INPUT = $(INPUT_FOR_DOXY)`), we have to define the variable. This is done in `.travis.yml`, but if you want to do it **locally** type in console:  
-     ```console
-     export INPUT_FOR_DOXY=". ./app ./lib ./tests" # to define the env variable
-     doxygen Doxyfile # to run doxygen
-     ```
+* after `git clone` run `git submodule update --init --recursive` to get the submodules code
+
+## Doxygen
+* to generate documentation we need to tell doxygen what dirs it should use as input (`INPUT` in Doxyfile). As in this Doxyfile I assigned it to env variable (`INPUT = $(INPUT_FOR_DOXY)`), we have to define the variable. This is done in `.travis.yml`, but if you want to do it **locally** type in console:  
+    ```console
+    export INPUT_FOR_DOXY=". ./app ./lib ./tests" # to define the env variable
+    doxygen Doxyfile # to run doxygen
+    ```
+## Coverage
 * to generate coverage **locally**: `lcov --capture --directory . --output-file coverage.info`, to generate coverage html report `genhtml coverage.info --output-directory out`
+
+## deployment
 * to delpoy:
      ```console
      git commit -m 'my message'

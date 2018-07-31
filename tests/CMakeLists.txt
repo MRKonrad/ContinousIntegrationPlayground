@@ -11,7 +11,7 @@ find_package (Threads REQUIRED)
 target_link_libraries(gtest ${CMAKE_THREAD_LIBS_INIT})
 
 # Test executable
-file(GLOB_RECURSE TESTS_FILES ${PROJECT_SOURCE_DIR}/tests/*.c* ${PROJECT_SOURCE_DIR}tests/*.h* ${PROJECT_SOURCE_DIR}tests/*.t*)
+file(GLOB_RECURSE TESTS_FILES ${PROJECT_SOURCE_DIR}/tests/*.c* ${PROJECT_SOURCE_DIR}/tests/*.h* ${PROJECT_SOURCE_DIR}/tests/*.t*)
 message("TESTS_FILES:" ${TESTS_FILES})
 
 add_executable(ContinousIntegrationPlaygroundTests ${TESTS_FILES})

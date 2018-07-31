@@ -32,6 +32,8 @@ env:
     - INPUT_FOR_DOXY: "'. ./app ./lib ./tests'"
     - OUTPUT_FOR_DOXY: "'$(TRAVIS_BUILD_DIR)/code_docs/$(GH_REPO_NAME)'"
     - GH_REPO_REF: github.com/MRKonrad/ContinousIntegrationPlayground.git
+    # used for VXL
+    - VXL_INSTALL_DIR: $TRAVIS_BUILD_DIR/vxl_install
 
 addons:
   apt:
@@ -51,6 +53,16 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
       pip install --user cpp-coveralls;
     fi
+
+  # install vnl
+  - git clone https://github.com/vxl/vxl
+  - cd vxl
+  - mkdir bin
+  - cd bin
+  - cmake .. -DCMAKE_INSTALL_PREFIX=${VXL_INSTALL_DIR} -DBUILD_TESTING=OFF -DBUILD_CORE_GEOMETRY=OFF -DBUILD_CORE_IMAGING=OFF -DBUILD_CORE_SERIALISATION=OFF -DBUILD_CORE_UTILITIES OFF
+  - make -j8 && make install
+  - cd ..
+  - cd ..
 
 script:
   # configure and generate

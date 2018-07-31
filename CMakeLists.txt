@@ -18,6 +18,21 @@ set (CMAKE_CXX_STANDARD_REQUIRED ON)
 configure_file ("${PROJECT_SOURCE_DIR}/MyCmakeConfig.h.in" "${PROJECT_BINARY_DIR}/MyCmakeConfig.h")
 include_directories ("${PROJECT_BINARY_DIR}")
 
+###########
+### VNL ###
+###########
+
+if($ENV{VXL_INSTALL_DIR})
+    set(VXL_INSTALL_DIR $ENV{VXL_INSTALL_DIR})
+else($ENV{VXL_INSTALL_DIR})
+    set(VXL_INSTALL_DIR ~/Code/todelete/vxl_install/)
+endif()
+
+find_package(VXL PATHS ${VXL_INSTALL_DIR})
+include_directories("${VXL_CORE_INCLUDE_DIR}")
+include_directories("${VXL_VCL_INCLUDE_DIR}")
+link_libraries(${VXL_LIBRARY_DIR}/libvnl.a)
+
 ####################
 ### MAIN PROGRAM ###
 ####################
@@ -40,4 +55,16 @@ add_library(ContinousIntegrationPlaygroundLib ${APP_FILES} ${LIB_FILES})
 ###############
 
 add_subdirectory(tests)
+
+
+
+#############################
+### DISPLAY ALL VARIABLES ###
+#############################
+
+get_cmake_property(_variableNames VARIABLES)
+list (SORT _variableNames)
+foreach (_variableName ${_variableNames})
+    message(STATUS "${_variableName}=${${_variableName}}")
+endforeach()
 
