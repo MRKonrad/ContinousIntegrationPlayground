@@ -55,6 +55,7 @@ before_install:
     fi
 
   # install vnl
+  - echo $VXL_INSTALL_DIR
   - git clone https://github.com/vxl/vxl
   - cd vxl
   - mkdir bin

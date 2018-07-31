@@ -22,10 +22,11 @@ include_directories ("${PROJECT_BINARY_DIR}")
 ### VNL ###
 ###########
 
+message($ENV{VXL_INSTALL_DIR})
 if($ENV{VXL_INSTALL_DIR})
     set(VXL_INSTALL_DIR $ENV{VXL_INSTALL_DIR})
-else($ENV{VXL_INSTALL_DIR})
-    set(VXL_INSTALL_DIR ~/Code/todelete/vxl_install/)
+#else($ENV{VXL_INSTALL_DIR})
+#    set(VXL_INSTALL_DIR ~/Code/todelete/vxl_install/)
 endif()
 
 find_package(VXL PATHS ${VXL_INSTALL_DIR})
