@@ -22,17 +22,23 @@ include_directories ("${PROJECT_BINARY_DIR}")
 ### VNL ###
 ###########
 
-message($ENV{VXL_INSTALL_DIR})
 if($ENV{VXL_INSTALL_DIR})
     set(VXL_INSTALL_DIR $ENV{VXL_INSTALL_DIR})
-#else($ENV{VXL_INSTALL_DIR})
-#    set(VXL_INSTALL_DIR ~/Code/todelete/vxl_install/)
+else($ENV{VXL_INSTALL_DIR})
+    set(VXL_INSTALL_DIR ~/Code/todelete/vxl_install/)
 endif()
 
 find_package(VXL PATHS ${VXL_INSTALL_DIR})
-include_directories("${VXL_CORE_INCLUDE_DIR}")
-include_directories("${VXL_VCL_INCLUDE_DIR}")
-link_libraries(${VXL_LIBRARY_DIR}/libvnl.a)
+if (VXL_FOUND)
+    include_directories("${VXL_CORE_INCLUDE_DIR}")
+    include_directories("${VXL_VCL_INCLUDE_DIR}")
+    link_libraries(${VXL_LIBRARY_DIR}/libvnl.a)
+else(VXL_FOUND)
+    include_directories("${VXL_INSTALL_DIR}/include/vxl/vcl}")
+    include_directories("${VXL_INSTALL_DIR}/include/vxl/core}")
+    link_libraries(${VXL_INSTALL_DIR}/lib/libvnl.a)
+endif(VXL_FOUND)
+
 
 ####################
 ### MAIN PROGRAM ###
