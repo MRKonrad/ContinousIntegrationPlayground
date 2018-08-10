@@ -3,9 +3,6 @@
 #------------------------------------#
 
 # TODO: how about configuring cmake to install instead of copying the executable?
-# TODO: it would be nice to 'addons: apt: sources:' conditional. Unfortunatelly if (like the one below) does not work:
-#       if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
-# TODO: verify if any of 'cd $TRAVIS_BUILD_DIR' is needed
 
 sudo: false
 language: cpp
@@ -36,7 +33,7 @@ env:
 addons:
   apt:
     sources:
-      ubuntu-toolchain-r-test;
+      - ubuntu-toolchain-r-test;
     packages:
       - doxygen
       - doxygen-doc
@@ -46,6 +43,14 @@ addons:
 
 before_install:
   - cd ${TRAVIS_BUILD_DIR}
+  - export USE_ITK="OFF"
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+      cd ..
+      curl -L -O https://www.dropbox.com/s/zi7wfc9qev2529d/ITK413_osx_install.zip
+      unzip -a ITK413_osx_install.zip
+      export USE_ITK="ON"
+      cd ${TRAVIS_BUILD_DIR};
+    fi
 
   # install coveralls only in linux g++
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
@@ -54,7 +59,7 @@ before_install:
 
 script:
   # configure and generate
-  - cmake .
+  - cmake . -DUSE_ITK=${USE_ITK}
 
   # add coverage option for coveralls (only in linux g++)
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
@@ -94,8 +99,7 @@ deploy:
   api_key:
     secure: hktHPt7mF39LVJhyABALXqMLv0XSrifhYSqi3pV/1shHgsNvMSx63igUKMZBZPnuxsclV8i0PGxKZxScu2Mh28PFJtyfEcD1W+FZURmOS9Fr3FhvlNuiH4SEbVacc0sS8DJEsV8uCeJZj/+cIJMFDmuEiKuSaGNTpFykh8gxJE2tHL7nkijOFUl7PDHWOE7oTGaYd+N0vntk5E26dZ8W8rDDcf8iKhxkGM8wyqDKgrZyp53a6AoadhxrPwUyoM0zuiQWp8pzQAyGMp828dWDxl+NJ/tpz/XtdKMJrLtiD+4ecVHg9gX37r86pTOpfTLDeedfPwIGhjja03G/ED9ZqgySnT3aEdpwae9WQfH6rYmCwg/RKvmnI1y9cFINO8hxwx/GcgusvIibkiKJqPamKkHBTTN9qbHipXXZj+KupPN8Qf0xj8sZRqYEV9eJQaBjKLw8dbi93JtpPRepBmCL8+jGZ7mCDZEJBeUDhXksAMTuecsR2UeKX9+2IydZpj1oEDsgVsL8kC3m1DR2mAZUdxCrjIcwjhosyUNO3GHqKkpnmRkqnF9zPEglPs4RuE8gTGTskpOPd0E/0wQRQAlcCZaCxgrt5a2t7d4qHz4fy7cKeM7nt73eW11I4/ZLgYiXcFk9T7dJuqtHFqOWpi64tV8NYtibbamib9D07zmhiS0=
   file_glob: true # to use wildcards
-  file:
-    - deployment/*
+  file: deployment/*
   skip_cleanup: true
   on:
     tags: true

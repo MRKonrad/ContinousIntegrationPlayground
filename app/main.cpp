@@ -9,6 +9,11 @@
 #include <iostream>
 #include "mylib.h"
 
+#include "MyCmakeConfig.h"
+#ifdef USE_ITK
+#include "itkImage.h"
+#endif
+
 using namespace std;
 
 /**
@@ -18,5 +23,12 @@ using namespace std;
 int main() {
     cout << "Hello, World!" << endl;
     cout << dummyFunction(4) << endl;
+
+#ifdef USE_ITK
+    typedef itk::Image< unsigned short, 3 > ImageType;
+    ImageType::Pointer image = ImageType::New();
+    std::cout << "Hello ITK World !" << std::endl;
+#endif
+
     return 0;
 }

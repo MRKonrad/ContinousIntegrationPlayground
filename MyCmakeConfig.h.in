@@ -3,6 +3,7 @@
 #define ContinousIntegrationPlayground_VERSION_MINOR @ContinousIntegrationPlayground_VERSION_MINOR@
 
 #cmakedefine USE_ONLY_CPP98
+#cmakedefine USE_ITK
 #cmakedefine USE_VTK
 #cmakedefine USE_NR2
 #cmakedefine USE_NR3

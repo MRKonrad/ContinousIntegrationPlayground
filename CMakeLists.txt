@@ -35,6 +35,17 @@ include_directories(lib)
 add_executable(ContinousIntegrationPlaygroundExe ${APP_FILES} ${LIB_FILES})
 add_library(ContinousIntegrationPlaygroundLib ${APP_FILES} ${LIB_FILES})
 
+###########
+### ITK ###
+###########
+
+set(USE_ITK OFF CACHE BOOL "Do you want to use ITK?")
+if(USE_ITK)
+    find_package(ITK PATHS ../ITK_install)
+    include(${ITK_USE_FILE})
+    target_link_libraries(ContinousIntegrationPlaygroundExe ${ITK_LIBRARIES})
+endif(USE_ITK)
+
 ###############
 ### TESTING ###
 ###############
