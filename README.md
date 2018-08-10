@@ -17,6 +17,9 @@ Based on
 
 # Notes
 
+## CMake
+* cmake variable summary https://stackoverflow.com/questions/31037882/whats-the-cmake-syntax-to-set-and-use-variables
+
 ## Gitmodules
 * entries in `.gitmodules` are added automatically by calling in console for example 
  `git submodule add https://github.com/google/googletest.git ./thirdParty/googletest`
@@ -31,7 +34,7 @@ Based on
 ## Coverage
 * to generate coverage **locally**: `lcov --capture --directory . --output-file coverage.info`, to generate coverage html report `genhtml coverage.info --output-directory out`
 
-## deployment
+## Deployment
 * to delpoy:
      ```console
      git commit -m 'my message'
@@ -40,7 +43,6 @@ Based on
      ```
 * tokens for deployment. Go to github/Settings/Developer settings/Personal access tokens. Generate a new one. To use in travis you have to have travis installed on your local system and encypt the token. To use in appveyor go to their website and encrypt the token.
  
-
 
 
 

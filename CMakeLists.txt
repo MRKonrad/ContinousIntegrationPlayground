@@ -63,8 +63,6 @@ add_library(ContinousIntegrationPlaygroundLib ${APP_FILES} ${LIB_FILES})
 
 add_subdirectory(tests)
 
-
-
 #############################
 ### DISPLAY ALL VARIABLES ###
 #############################
