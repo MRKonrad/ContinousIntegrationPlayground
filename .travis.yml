@@ -47,7 +47,7 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
       cd ..;
       curl -L -O https://www.dropbox.com/s/zi7wfc9qev2529d/ITK413_osx_install.zip;
-      unzip -a ITK413_osx_install.zip;
+      unzip -a -q ITK413_osx_install.zip;
       export USE_ITK="ON";
       cd ${TRAVIS_BUILD_DIR};
     fi
