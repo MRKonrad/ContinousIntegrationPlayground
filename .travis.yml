@@ -4,16 +4,15 @@
 
 # TODO: how about configuring cmake to install instead of copying the executable?
 
-sudo: false
 language: cpp
 
 os:
-  # - linux
+#  - linux
   - osx
 
 compiler:
   - gcc
-  # - clang
+#  - clang
 
 branches:
   # Blacklist the documentation branch
@@ -40,6 +39,7 @@ addons:
       - doxygen-latex
       - doxygen-gui
       - graphviz
+      - lcov
 
 before_install:
   - cd ${TRAVIS_BUILD_DIR}

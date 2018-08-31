@@ -18,12 +18,16 @@ Based on
 # Notes
 * entries in `.gitmodules` are added automatically by calling in console for example 
  `git submodule add https://github.com/google/googletest.git ./thirdParty/googletest`
- * to generate documentation we need to tell doxygen what dirs it should use as input (`INPUT` in Doxyfile). As in this Doxyfile I assigned it to env variable (`INPUT = $(INPUT_FOR_DOXY)`), we have to define the variable. This is done in `.travis.yml`, but if you want to do it **locally** type in console:  
+* to generate documentation we need to tell doxygen what dirs it should use as input (`INPUT` in Doxyfile). As in this Doxyfile I assigned it to env variable (`INPUT = $(INPUT_FOR_DOXY)`), we have to define the variable. This is done in `.travis.yml`, but if you want to do it **locally** type in console:  
      ```console
      export INPUT_FOR_DOXY=". ./app ./lib ./tests" # to define the env variable
      doxygen Doxyfile # to run doxygen
      ```
-* to generate coverage **locally**: `lcov --capture --directory . --output-file coverage.info`, to generate coverage html report `genhtml coverage.info --output-directory out`
+* to generate coverage **locally**: 
+  * `cmake . -DCMAKE_CXX_FLAGS="-fprofile-arcs -ftest-coverage"`
+  * `lcov --no-external --capture --directory . --output-file coverage.info`
+  * `lcov --remove coverage.info 'deleteme/*' 'thirParty/*' 'tests/*' -o coverage_filtered.info`
+  * to generate coverage html report `genhtml covercoverage_filteredage.info --output-directory out`
 * to delpoy:
      ```console
      git commit -m 'my message'
