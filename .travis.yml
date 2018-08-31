@@ -3,11 +3,7 @@
 #------------------------------------#
 
 # TODO: how about configuring cmake to install instead of copying the executable?
-# TODO: it would be nice to 'addons: apt: sources:' conditional. Unfortunatelly if (like the one below) does not work:
-#       if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
-# TODO: verify if any of 'cd $TRAVIS_BUILD_DIR' is needed
 
-sudo: false
 language: cpp
 
 os:
@@ -32,6 +28,8 @@ env:
     - INPUT_FOR_DOXY: "'. ./app ./lib ./tests'"
     - OUTPUT_FOR_DOXY: "'$(TRAVIS_BUILD_DIR)/code_docs/$(GH_REPO_NAME)'"
     - GH_REPO_REF: github.com/MRKonrad/ContinousIntegrationPlayground.git
+    - EXTENDED_BUILD: "OFF"
+    - DEPLOY_BUILD: "OFF"
 
 addons:
   apt:
@@ -43,13 +41,23 @@ addons:
       - doxygen-latex
       - doxygen-gui
       - graphviz
+      - lcov
 
 before_install:
+  # condition for the extended build (with coverage and documentation)
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ] ; then
+      EXTENDED_BUILD="ON";
+    fi
+  # condition for the deployment build
+  - if [ "$CXX" == "g++" ] ; then
+      export DEPLOY_BUILD="ON";
+    fi
   - cd ${TRAVIS_BUILD_DIR}
 
-  # install coveralls only in linux g++
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
-      pip install --user cpp-coveralls;
+install:
+  # install coverage tools only in linux g++
+  - if [ "$EXTENDED_BUILD" == "ON" ]; then
+      sudo pip install codecov;
     fi
 
 script:
@@ -57,28 +65,37 @@ script:
   - cmake .
 
   # add coverage option for coveralls (only in linux g++)
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
+  - if [ "$EXTENDED_BUILD" == "ON" ]; then
       cmake -DCOVERAGE=1 . ;
     fi
 
   # this is make
   - make -j8
+  - make install
 
-  # needed to get the coverage
-  - ./tests/ContinousIntegrationPlaygroundTests
+  # testing and getting the test coverage
+  - cd tests
+  - ./ContinousIntegrationPlaygroundTests
+  - cd $TRAVIS_BUILD_DIR
 
 after_success:
-  # Run coverage analysis only in linux g++
+  # Run coverage analysis only in linux g++. Eval because travis wants to parse -- as part of yaml block
+  - if [ "$EXTENDED_BUILD" == "ON" ]; then
+      cd $TRAVIS_BUILD_DIR;
+      eval "lcov --no-external --directory . --capture --output-file coverage.info" ;
+      eval "lcov --remove coverage.info 'thirdParty/*' -o coverage.info" ;
+      eval "lcov --list coverage.info" ;
+      bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports" ;
+    fi
+
   # Generate and deploy documentation only in linux g++
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$CXX" == "g++" ]; then
-      coveralls --root . --exclude thirdParty -E ".*CMakeFiles.*" ;
+  - if [ "$EXTENDED_BUILD" == "ON" ]; then
       chmod +x generateDocumentationAndDeploy.sh;
       ./generateDocumentationAndDeploy.sh;
     fi
 
 before_deploy:
   - echo "Ready to deploy?"
-
   - export exe_extended_name=ContinousIntegrationPlaygroundExe_${TRAVIS_BRANCH}_${TRAVIS_OS_NAME} # just a variable
   # Problem: when deploying an executable as it is, somewhere in the process its permission to execute (-x) is lost.
   # Solution: zip it and deploy the archive
