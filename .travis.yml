@@ -62,7 +62,7 @@ install:
 
 script:
   # configure and generate
-  - cmake .
+  - cmake . -DCMAKE_INSTALL_PREFIX=install
 
   # add coverage option for coveralls (only in linux g++)
   - if [ "$EXTENDED_BUILD" == "ON" ]; then
