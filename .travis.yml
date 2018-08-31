@@ -7,7 +7,7 @@
 language: cpp
 
 os:
-  # - linux
+  - linux
   - osx
 
 compiler:
