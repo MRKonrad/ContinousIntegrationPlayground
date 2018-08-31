@@ -35,6 +35,9 @@ include_directories(lib)
 add_executable(ContinousIntegrationPlaygroundExe ${APP_FILES} ${LIB_FILES})
 add_library(ContinousIntegrationPlaygroundLib ${APP_FILES} ${LIB_FILES})
 
+install (TARGETS ContinousIntegrationPlaygroundExe DESTINATION ${CMAKE_INSTALL_PREFIX}/app)
+install (TARGETS ContinousIntegrationPlaygroundLib DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+
 ###############
 ### TESTING ###
 ###############
