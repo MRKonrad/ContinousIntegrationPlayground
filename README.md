@@ -1,13 +1,13 @@
-# Continous Integration Playground
+# Continuous Integration Playground
 
-See the [DOCS PAGE](https://mrkonrad.github.io/ContinousIntegrationPlayground/html/).
+See the [DOCS PAGE](https://mrkonrad.github.io/ContinuousIntegrationPlayground/html/).
 
-| System        | Status        |
-|:-------------:|:-------------:|
-| Travis (OSX/Linux) | [![Travis (.org)](https://img.shields.io/travis/MRKonrad/ContinousIntegrationPlayground.svg?style=for-the-badge)](https://travis-ci.org/MRKonrad/ContinousIntegrationPlayground) |
-| AppVeyor (Windows) | [![AppVeyor](https://img.shields.io/appveyor/ci/MRKonrad/continousintegrationplayground.svg?style=for-the-badge)](https://ci.appveyor.com/project/MRKonrad/continousintegrationplayground) |
-| Codecov (test coverage) | [![codecov](https://img.shields.io/codecov/c/github/MRKonrad/ContinousIntegrationPlayground.svg?style=for-the-badge)](https://codecov.io/gh/MRKonrad/ContinousIntegrationPlayground) |
-
+| System   |      Badge      |
+|----------|:---------------:|
+| [OSX/Linux build - Travis][travis_link]   | [![Travis (.org)][travis_badge]][travis_link]                      |
+| [Windows build - AppVeyor][appveyor_link] | [![AppVeyor][appveyor_badge]][appveyor_link]    
+| [Test coverage][codecov_link]               | [![codecov][codecov_badge]][codecov_link] |
+| [Downloads][downloads_link]               | [![GitHub Releases (by Release)][downloads_badge]][downloads_link] |
 
 # Inspiration
 Based on
@@ -39,4 +39,17 @@ Based on
   git push --delete origin v0.1
   git tag --delete v0.1
   ```
-* tokens for deployment. Go to github/Settings/Developer settings/Personal access tokens. Generate a new one. To use in travis you have to have travis installed on your local system and encypt the token. To use in appveyor go to their website and encrypt the token.
+* tokens for deployment. Go to `github/Settings/Developer settings/Personal access tokens`. Generate a new one. To use in travis you have to have travis installed on your local system and encypt the token. To use in appveyor go to their website and encrypt the token.
+
+* Slack notifications:
+  * appveyor - add from repo setting at their webpage using this token: https://api.slack.com/custom-integrations/legacy-tokens
+  * travis - install travis integration in slack
+
+[travis_badge]: https://img.shields.io/travis/MRKonrad/ContinuousIntegrationPlayground/master.svg?style=flat-square
+[travis_link]: https://travis-ci.org/MRKonrad/ContinuousIntegrationPlayground
+[appveyor_badge]: https://img.shields.io/appveyor/ci/MRKonrad/ContinuousIntegrationPlayground/master.svg?style=flat-square
+[appveyor_link]: https://ci.appveyor.com/project/MRKonrad/continuousintegrationplayground
+[codecov_badge]: https://img.shields.io/codecov/c/github/MRKonrad/ContinuousIntegrationPlayground.svg?style=flat-square
+[codecov_link]: https://codecov.io/gh/MRKonrad/ContinuousIntegrationPlayground
+[downloads_link]: https://github.com/MRKonrad/ContinuousIntegrationPlayground/releases
+[downloads_badge]: https://img.shields.io/github/downloads/MRKonrad/ContinuousIntegrationPlayground/total.svg?style=flat-square
